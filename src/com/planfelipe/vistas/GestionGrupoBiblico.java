@@ -23,6 +23,11 @@ import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class GestionGrupoBiblico extends JFrame {
 
@@ -60,6 +65,8 @@ public class GestionGrupoBiblico extends JFrame {
 	private JTextField textFieldVisitas;
 	private JTextField textFieldOfrendaMisionera;
 	private JTextField textFieldOfrendaNinos;
+	private JTextField textField;
+	private JTable tableListado;
 
 	/**
 	 * Launch the application.
@@ -90,6 +97,50 @@ public class GestionGrupoBiblico extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JPanel panelPrincipal = new JPanel();
+		panelPrincipal.setBounds(0, 0, 1008, 729);
+		contentPane.add(panelPrincipal);
+		panelPrincipal.setLayout(null);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 68, 1008, 66);
+		panelPrincipal.add(menuBar);
+		
+		JMenu mnRegistrar = new JMenu("Registrar");
+		mnRegistrar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/add-group-button.png")));
+		menuBar.add(mnRegistrar);
+		
+		JMenu mnNewMenu = new JMenu("Modificar");
+		mnNewMenu.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/group-editor.png")));
+		menuBar.add(mnNewMenu);
+		
+		JMenu mnNewMenu_1 = new JMenu("Agregar informes semanales");
+		mnNewMenu_1.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/business-report.png")));
+		menuBar.add(mnNewMenu_1);
+		
+		JMenu mnListar = new JMenu("Listar...");
+		mnListar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/numbered-list.png")));
+		menuBar.add(mnListar);
+		
+		JMenuItem mntmRegresar = new JMenuItem("Regresar");
+		mntmRegresar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/return.png")));
+		menuBar.add(mntmRegresar);
+		
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setBounds(95, 159, 756, 533);
+		panelPrincipal.add(lblLogo);
+		lblLogo.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/slogan-transparente-2016.png")));
+		
+		JLabel lblHeader = new JLabel("header");
+		lblHeader.setBounds(0, 0, 1008, 67);
+		panelPrincipal.add(lblHeader);
+		lblHeader.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Encabezado gestion grupos.png")));
+		
+		JLabel lblWallpaper = new JLabel("wallpaper");
+		lblWallpaper.setBounds(0, 129, 1008, 600);
+		panelPrincipal.add(lblWallpaper);
+		lblWallpaper.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
+		
 		JPanel panelListado = new JPanel();
 		panelListado.setBounds(0, 0, 1008, 729);
 		contentPane.add(panelListado);
@@ -99,6 +150,48 @@ public class GestionGrupoBiblico extends JFrame {
 		lblHeader2.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/EncabezadoListado.png")));
 		lblHeader2.setBounds(0, 0, 1008, 67);
 		panelListado.add(lblHeader2);
+		
+		JLabel lblNewLabel_2 = new JLabel("Listar por:");
+		lblNewLabel_2.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblNewLabel_2.setBounds(150, 99, 75, 22);
+		panelListado.add(lblNewLabel_2);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "Codigo de grupo b\u00EDblico", "Felipe Lider", "Felipe de Grupos"}));
+		comboBox.setBounds(237, 95, 234, 36);
+		panelListado.add(comboBox);
+		
+		textField = new JTextField();
+		textField.setBounds(481, 95, 234, 36);
+		panelListado.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnBuscar3 = new JButton("");
+		btnBuscar3.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonBuscar.JPG")));
+		btnBuscar3.setBounds(735, 92, 154, 41);
+		panelListado.add(btnBuscar3);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(106, 198, 776, 394);
+		panelListado.add(scrollPane);
+		
+		tableListado = new JTable();
+		scrollPane.setViewportView(tableListado);
+		
+		JButton buttonExportar = new JButton("");
+		buttonExportar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonExportar.JPG")));
+		buttonExportar.setBounds(553, 630, 324, 61);
+		panelListado.add(buttonExportar);
+		
+		JButton buttonRegresar4 = new JButton("");
+		buttonRegresar4.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
+		buttonRegresar4.setBounds(116, 630, 324, 61);
+		panelListado.add(buttonRegresar4);
+		
+		JLabel labelWallpaper4 = new JLabel("");
+		labelWallpaper4.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
+		labelWallpaper4.setBounds(0, 66, 1008, 663);
+		panelListado.add(labelWallpaper4);
 		
 		JPanel panelInformes_1 = new JPanel();
 		panelInformes_1.setBounds(0, 0, 1008, 729);
@@ -418,50 +511,6 @@ public class GestionGrupoBiblico extends JFrame {
 		lblWallpaper3.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
 		lblWallpaper3.setBounds(0, 67, 1008, 662);
 		panelInformes_2.add(lblWallpaper3);
-		
-		JPanel panelPrincipal = new JPanel();
-		panelPrincipal.setBounds(0, 0, 1008, 729);
-		contentPane.add(panelPrincipal);
-		panelPrincipal.setLayout(null);
-		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 68, 1008, 66);
-		panelPrincipal.add(menuBar);
-		
-		JMenu mnRegistrar = new JMenu("Registrar");
-		mnRegistrar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/add-group-button.png")));
-		menuBar.add(mnRegistrar);
-		
-		JMenu mnNewMenu = new JMenu("Modificar");
-		mnNewMenu.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/group-editor.png")));
-		menuBar.add(mnNewMenu);
-		
-		JMenu mnNewMenu_1 = new JMenu("Agregar informes semanales");
-		mnNewMenu_1.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/business-report.png")));
-		menuBar.add(mnNewMenu_1);
-		
-		JMenu mnListar = new JMenu("Listar...");
-		mnListar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/numbered-list.png")));
-		menuBar.add(mnListar);
-		
-		JMenuItem mntmRegresar = new JMenuItem("Regresar");
-		mntmRegresar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/return.png")));
-		menuBar.add(mntmRegresar);
-		
-		JLabel lblLogo = new JLabel("");
-		lblLogo.setBounds(95, 159, 756, 533);
-		panelPrincipal.add(lblLogo);
-		lblLogo.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/slogan-transparente-2016.png")));
-		
-		JLabel lblHeader = new JLabel("header");
-		lblHeader.setBounds(0, 0, 1008, 67);
-		panelPrincipal.add(lblHeader);
-		lblHeader.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Encabezado gestion grupos.png")));
-		
-		JLabel lblWallpaper = new JLabel("wallpaper");
-		lblWallpaper.setBounds(0, 129, 1008, 600);
-		panelPrincipal.add(lblWallpaper);
-		lblWallpaper.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
 		
 		JPanel panelModificacion = new JPanel();
 		panelModificacion.setBounds(0, 0, 1008, 729);
