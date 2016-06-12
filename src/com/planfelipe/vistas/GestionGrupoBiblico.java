@@ -57,13 +57,49 @@ public class GestionGrupoBiblico extends JFrame {
 	 */
 	public GestionGrupoBiblico() {
 		setTitle("Gesti\u00F3n de Grupos B\u00EDblicos");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/pequen_o-Pagina-2016.jpg")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/pequen_o-Pagina-2016.jpg")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 768);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JPanel panelPrincipal = new JPanel();
+		panelPrincipal.setBounds(0, 0, 1008, 729);
+		contentPane.add(panelPrincipal);
+		panelPrincipal.setLayout(null);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 68, 1008, 66);
+		panelPrincipal.add(menuBar);
+		
+		JMenu mnRegistrar = new JMenu("Registrar");
+		mnRegistrar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/add-group-button.png")));
+		menuBar.add(mnRegistrar);
+		
+		JMenu mnNewMenu = new JMenu("Modificar");
+		mnNewMenu.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/group-editor.png")));
+		menuBar.add(mnNewMenu);
+		
+		JMenuItem mntmRegresar = new JMenuItem("Regresar");
+		mntmRegresar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/return.png")));
+		menuBar.add(mntmRegresar);
+		
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setBounds(95, 159, 756, 533);
+		panelPrincipal.add(lblLogo);
+		lblLogo.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/slogan-transparente-2016.png")));
+		
+		JLabel lblHeader = new JLabel("header");
+		lblHeader.setBounds(0, 0, 1008, 67);
+		panelPrincipal.add(lblHeader);
+		lblHeader.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Encabezado gestion grupos.png")));
+		
+		JLabel lblWallpaper = new JLabel("wallpaper");
+		lblWallpaper.setBounds(0, 129, 1008, 600);
+		panelPrincipal.add(lblWallpaper);
+		lblWallpaper.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
 		
 		JPanel panelRegistro = new JPanel();
 		panelRegistro.setBounds(0, 0, 1008, 729);
@@ -115,7 +151,7 @@ public class GestionGrupoBiblico extends JFrame {
 		panelRegistro.add(lblFelipeLider);
 		
 		JLabel lblNota = new JLabel("New label");
-		lblNota.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/notificacion-registro_03.png")));
+		lblNota.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/notificacion-registro_03.png")));
 		lblNota.setBounds(238, 623, 523, 45);
 		panelRegistro.add(lblNota);
 		
@@ -123,60 +159,24 @@ public class GestionGrupoBiblico extends JFrame {
 		btnRegistrar.setToolTipText("Los miembros de este nuevo grupo deben ser agregados individualmente, buscando cada miembro individualmente y relacionandolo al grupo.");
 		
 		
-		btnRegistrar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/BotonRegistrar.JPG")));
+		btnRegistrar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegistrar.JPG")));
 		btnRegistrar.setBounds(570, 512, 324, 61);
 		panelRegistro.add(btnRegistrar);
 		
 		JButton btnRegresar = new JButton("New button");
-		btnRegresar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/BotonRegresar.JPG")));
+		btnRegresar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
 		btnRegresar.setBounds(114, 512, 324, 61);
 		panelRegistro.add(btnRegresar);
 		
 		JLabel lblWallpaperRegistro = new JLabel("");
-		lblWallpaperRegistro.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/Background.png")));
+		lblWallpaperRegistro.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
 		lblWallpaperRegistro.setBounds(0, 66, 1008, 663);
 		panelRegistro.add(lblWallpaperRegistro);
 		
 		JLabel lblHeaderRegistro = new JLabel("");
-		lblHeaderRegistro.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/Encabezado Registro Grupo.png")));
+		lblHeaderRegistro.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Encabezado Registro Grupo.png")));
 		lblHeaderRegistro.setBounds(0, 0, 1008, 67);
 		panelRegistro.add(lblHeaderRegistro);
-		
-		JPanel panelPrincipal = new JPanel();
-		panelPrincipal.setBounds(0, 0, 1008, 729);
-		contentPane.add(panelPrincipal);
-		panelPrincipal.setLayout(null);
-		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 68, 1008, 66);
-		panelPrincipal.add(menuBar);
-		
-		JMenu mnRegistrar = new JMenu("Registrar");
-		mnRegistrar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/add-group-button.png")));
-		menuBar.add(mnRegistrar);
-		
-		JMenu mnNewMenu = new JMenu("Modificar");
-		mnNewMenu.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/group-editor.png")));
-		menuBar.add(mnNewMenu);
-		
-		JMenuItem mntmRegresar = new JMenuItem("Regresar");
-		mntmRegresar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/return.png")));
-		menuBar.add(mntmRegresar);
-		
-		JLabel lblLogo = new JLabel("");
-		lblLogo.setBounds(95, 159, 756, 533);
-		panelPrincipal.add(lblLogo);
-		lblLogo.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/slogan-transparente-2016.png")));
-		
-		JLabel lblHeader = new JLabel("header");
-		lblHeader.setBounds(0, 0, 1008, 67);
-		panelPrincipal.add(lblHeader);
-		lblHeader.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/Encabezado gestion grupos.png")));
-		
-		JLabel lblWallpaper = new JLabel("wallpaper");
-		lblWallpaper.setBounds(0, 129, 1008, 600);
-		panelPrincipal.add(lblWallpaper);
-		lblWallpaper.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/Background.png")));
 		
 		JPanel panelModificacion = new JPanel();
 		panelModificacion.setBounds(0, 0, 1008, 729);
@@ -234,18 +234,18 @@ public class GestionGrupoBiblico extends JFrame {
 		PromptSupport.setPrompt("Ej: 12345", textFieldBusqueda);
 		
 		JButton btnRegresar2 = new JButton("New button");
-		btnRegresar2.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/BotonRegresar.JPG")));
+		btnRegresar2.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
 		btnRegresar2.setBounds(114, 512, 324, 61);
 		panelModificacion.add(btnRegresar2);
 		
 		JButton btnGuardar = new JButton("New button");
-		btnGuardar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/BotonGuardarCambios.JPG")));
+		btnGuardar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonGuardarCambios.JPG")));
 		btnGuardar.setToolTipText("Los miembros de este nuevo grupo deben ser agregados individualmente, buscando cada miembro individualmente y relacionandolo al grupo.");
 		btnGuardar.setBounds(569, 512, 324, 61);
 		panelModificacion.add(btnGuardar);
 		
 		JButton btnBuscar = new JButton("");
-		btnBuscar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/BotonBuscar.JPG")));
+		btnBuscar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonBuscar.JPG")));
 		btnBuscar.setBounds(724, 97, 154, 41);
 		panelModificacion.add(btnBuscar);
 		
@@ -255,12 +255,12 @@ public class GestionGrupoBiblico extends JFrame {
 		panelModificacion.add(lblcualEsEl);
 		
 		JLabel lblBackground = new JLabel("New label");
-		lblBackground.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/Background.png")));
+		lblBackground.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
 		lblBackground.setBounds(0, 66, 1008, 663);
 		panelModificacion.add(lblBackground);
 		
 		JLabel lblHeaderModif = new JLabel("New label");
-		lblHeaderModif.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/vainasarrechas/libs/Encabezadoodificargrupo.png")));
+		lblHeaderModif.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Encabezadoodificargrupo.png")));
 		lblHeaderModif.setBounds(0, 0, 1008, 67);
 		panelModificacion.add(lblHeaderModif);
 	}

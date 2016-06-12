@@ -76,27 +76,12 @@ public class GestionFeligres extends JFrame {
 	 */
 	public GestionFeligres() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(GestionFeligres.class.getResource("/com/vainasarrechas/libs/pequen_o-Pagina-2016.jpg")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GestionFeligres.class.getResource("/com/planfelipe/imagenes/pequen_o-Pagina-2016.jpg")));
 		setBounds(100, 100, 1024, 768);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
-		
-		JPanel panelBusqueda = new JPanel();
-		panelBusqueda.setBounds(0, 0, 1008, 729);
-		contentPane.add(panelBusqueda);
-		panelBusqueda.setLayout(null);
-		
-		JLabel lblHead1 = new JLabel("");
-		lblHead1.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/EncabezadoBusqueda.png")));
-		lblHead1.setBounds(0, 0, 1008, 67);
-		panelBusqueda.add(lblHead1);
-		
-		JLabel lblWallp = new JLabel("");
-		lblWallp.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/Background.png")));
-		lblWallp.setBounds(0, 67, 1008, 676);
-		panelBusqueda.add(lblWallp);
 		
 		JPanel panelPrincipal = new JPanel();
 		panelPrincipal.setBounds(0, 0, 1008, 729);
@@ -108,31 +93,46 @@ public class GestionFeligres extends JFrame {
 		panelPrincipal.add(menuBar);
 		
 		JMenu mnRegistrar = new JMenu("Registrar");
-		mnRegistrar.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/add-group-button.png")));
+		mnRegistrar.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/add-group-button.png")));
 		menuBar.add(mnRegistrar);
 		
 		JMenu mnBusqueda = new JMenu("Buscar y Modificar");
-		mnBusqueda.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/group-editor.png")));
+		mnBusqueda.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/group-editor.png")));
 		menuBar.add(mnBusqueda);
 		
 		JMenuItem mntmRegresar = new JMenuItem("Regresar");
-		mntmRegresar.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/return.png")));
+		mntmRegresar.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/return.png")));
 		menuBar.add(mntmRegresar);
 		
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setBounds(95, 159, 756, 533);
 		panelPrincipal.add(lblLogo);
-		lblLogo.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/slogan-transparente-2016.png")));
+		lblLogo.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/slogan-transparente-2016.png")));
 		
 		JLabel lblHeader = new JLabel("header");
 		lblHeader.setBounds(0, 0, 1008, 67);
 		panelPrincipal.add(lblHeader);
-		lblHeader.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/EncabezadoGestionFeligres.png")));
+		lblHeader.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/EncabezadoGestionFeligres.png")));
 		
 		JLabel lblWallpaper = new JLabel("wallpaper");
 		lblWallpaper.setBounds(0, 129, 1008, 600);
 		panelPrincipal.add(lblWallpaper);
-		lblWallpaper.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/Background.png")));
+		lblWallpaper.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
+		
+		JPanel panelBusqueda = new JPanel();
+		panelBusqueda.setBounds(0, 0, 1008, 729);
+		contentPane.add(panelBusqueda);
+		panelBusqueda.setLayout(null);
+		
+		JLabel lblHead1 = new JLabel("");
+		lblHead1.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/EncabezadoBusqueda.png")));
+		lblHead1.setBounds(0, 0, 1008, 67);
+		panelBusqueda.add(lblHead1);
+		
+		JLabel lblWallp = new JLabel("");
+		lblWallp.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
+		lblWallp.setBounds(0, 67, 1008, 676);
+		panelBusqueda.add(lblWallp);
 		
 		JPanel panelModificacion = new JPanel();
 		panelModificacion.setBounds(0, 0, 1008, 729);
@@ -140,7 +140,7 @@ public class GestionFeligres extends JFrame {
 		panelModificacion.setLayout(null);
 		
 		JLabel lblHead = new JLabel("New label");
-		lblHead.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/EncabezadoModifFeligreses.png")));
+		lblHead.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/EncabezadoModifFeligreses.png")));
 		lblHead.setBounds(0, 0, 1008, 67);
 		panelModificacion.add(lblHead);
 		
@@ -208,22 +208,22 @@ public class GestionFeligres extends JFrame {
 		panelModificacion.add(comboBoxRango2);
 		
 		JButton btnEditarMas = new JButton("");
-		btnEditarMas.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/BotonEditarMas.JPG")));
+		btnEditarMas.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonEditarMas.JPG")));
 		btnEditarMas.setBounds(346, 453, 324, 61);
 		panelModificacion.add(btnEditarMas);
 		
 		JButton btnRegresar4 = new JButton("");
-		btnRegresar4.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/BotonRegresar.JPG")));
+		btnRegresar4.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
 		btnRegresar4.setBounds(116, 563, 324, 61);
 		panelModificacion.add(btnRegresar4);
 		
 		JButton buttonGuardar4 = new JButton("");
-		buttonGuardar4.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/BotonGuardarCambios.JPG")));
+		buttonGuardar4.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonGuardarCambios.JPG")));
 		buttonGuardar4.setBounds(549, 563, 324, 61);
 		panelModificacion.add(buttonGuardar4);
 		
 		JLabel lblWallpp = new JLabel("New label");
-		lblWallpp.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/Background.png")));
+		lblWallpp.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
 		lblWallpp.setBounds(0, 67, 1008, 662);
 		panelModificacion.add(lblWallpp);
 		
@@ -233,7 +233,7 @@ public class GestionFeligres extends JFrame {
 		panelRegistro3.setLayout(null);
 		
 		JLabel lblhead3 = new JLabel("");
-		lblhead3.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/EncabezadoRegistroFeligreses.png")));
+		lblhead3.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/EncabezadoRegistroFeligreses.png")));
 		lblhead3.setBounds(0, 0, 1008, 67);
 		panelRegistro3.add(lblhead3);
 		
@@ -302,12 +302,12 @@ public class GestionFeligres extends JFrame {
 		panelRegistro3.add(lblDatosFamiliaresY);
 		
 		JButton btnRegresar3 = new JButton("New button");
-		btnRegresar3.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/BotonRegresar.JPG")));
+		btnRegresar3.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
 		btnRegresar3.setBounds(116, 563, 324, 61);
 		panelRegistro3.add(btnRegresar3);
 		
 		JButton btnRegistrar = new JButton("New button");
-		btnRegistrar.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/BotonRegistrar.JPG")));
+		btnRegistrar.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonRegistrar.JPG")));
 		btnRegistrar.setBounds(571, 563, 324, 61);
 		panelRegistro3.add(btnRegistrar);
 		
@@ -358,7 +358,7 @@ public class GestionFeligres extends JFrame {
 		panelRegistro3.add(comboBoxStatus);
 		
 		JLabel lblwall3 = new JLabel("New label");
-		lblwall3.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/Background.png")));
+		lblwall3.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
 		lblwall3.setBounds(0, 67, 1008, 662);
 		panelRegistro3.add(lblwall3);
 		
@@ -423,7 +423,7 @@ public class GestionFeligres extends JFrame {
 		panelRegistro2.add(comboBoxEdGeneral);
 		
 		JLabel lblhead2 = new JLabel("New label");
-		lblhead2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/EncabezadoRegistroFeligreses.png")));
+		lblhead2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/EncabezadoRegistroFeligreses.png")));
 		lblhead2.setBounds(0, 0, 1008, 67);
 		panelRegistro2.add(lblhead2);
 		
@@ -493,22 +493,22 @@ public class GestionFeligres extends JFrame {
 		panelRegistro2.add(lblOficioOCargo);
 		
 		JButton btnRegresar2 = new JButton("New button");
-		btnRegresar2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/BotonRegresar.JPG")));
+		btnRegresar2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
 		btnRegresar2.setBounds(116, 563, 324, 61);
 		panelRegistro2.add(btnRegresar2);
 		
 		JButton btnSiguiente2 = new JButton("New button");
-		btnSiguiente2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/BotonSiguiente.jpg")));
+		btnSiguiente2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonSiguiente.jpg")));
 		btnSiguiente2.setBounds(571, 563, 324, 61);
 		panelRegistro2.add(btnSiguiente2);
 		
 		JLabel lblAdvise = new JLabel("New label");
-		lblAdvise.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/notification_ui_03.png")));
+		lblAdvise.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/notification_ui_03.png")));
 		lblAdvise.setBounds(255, 653, 523, 65);
 		panelRegistro2.add(lblAdvise);
 		
 		JLabel lblWall2 = new JLabel("New label");
-		lblWall2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/Background.png")));
+		lblWall2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
 		lblWall2.setBounds(0, 66, 1008, 663);
 		panelRegistro2.add(lblWall2);
 		
@@ -582,7 +582,7 @@ public class GestionFeligres extends JFrame {
 		panelRegistro1.add(lblGrupoBiblico);
 		
 		JLabel lblHeader2 = new JLabel("");
-		lblHeader2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/EncabezadoRegistroFeligreses.png")));
+		lblHeader2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/EncabezadoRegistroFeligreses.png")));
 		lblHeader2.setBounds(0, 0, 1008, 67);
 		panelRegistro1.add(lblHeader2);
 		
@@ -647,22 +647,22 @@ public class GestionFeligres extends JFrame {
 		panelRegistro1.add(lblLugarDeNacimiento);
 		
 		JButton btnSiguiente = new JButton("New button");
-		btnSiguiente.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/BotonSiguiente.jpg")));
+		btnSiguiente.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonSiguiente.jpg")));
 		btnSiguiente.setBounds(571, 563, 324, 61);
 		panelRegistro1.add(btnSiguiente);
 		
 		JButton btnRegresar = new JButton("New button");
-		btnRegresar.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/BotonRegresar.JPG")));
+		btnRegresar.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
 		btnRegresar.setBounds(116, 563, 324, 61);
 		panelRegistro1.add(btnRegresar);
 		
 		JLabel lblBeware = new JLabel("New label");
-		lblBeware.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/notification_ui_03.png")));
+		lblBeware.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/notification_ui_03.png")));
 		lblBeware.setBounds(255, 653, 523, 65);
 		panelRegistro1.add(lblBeware);
 		
 		JLabel lblWall = new JLabel("");
-		lblWall.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/vainasarrechas/libs/Background.png")));
+		lblWall.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
 		lblWall.setBounds(10, 56, 1008, 662);
 		panelRegistro1.add(lblWall);
 	}
