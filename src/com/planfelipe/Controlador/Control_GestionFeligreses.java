@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import com.planfelipe.Class.Calendario;
 import com.planfelipe.vistas.GestionFeligres;
 import com.planfelipe.vistas.Login;
 import com.planfelipe.vistas.PantallaMain;
@@ -16,7 +17,7 @@ public class Control_GestionFeligreses implements MouseListener, ActionListener{
 
 	private GestionFeligres es;
 	private String cu;
-	
+
 	
 	public Control_GestionFeligreses(GestionFeligres es, String cu){
 		this.es = es;
@@ -100,9 +101,14 @@ public class Control_GestionFeligreses implements MouseListener, ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 
+/*
+ * eventos que se generan el panelRegistro_1
+ */
+		
 		if(cu.equals("Regresar_1")){
 			
 			es.panelPrincipal.setVisible(true);
+			
 			es.panelRegistro1.setVisible(false);
 		}
 		

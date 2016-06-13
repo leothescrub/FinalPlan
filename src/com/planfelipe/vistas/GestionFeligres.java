@@ -13,9 +13,14 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdesktop.xswingx.PromptSupport;
 
+import com.planfelipe.Class.Calendario;
+import com.planfelipe.Class.DateLabelFormatter;
 import com.planfelipe.Controlador.Control_GestionFeligreses;
+
+
 
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -27,13 +32,16 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;	
+import java.awt.event.ActionEvent;
+import javax.swing.SpringLayout;
+import javax.swing.JFormattedTextField;
+import javax.swing.SwingConstants;	
 
 public class GestionFeligres extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldCed;
-	private JTextField textFieldFechaEntrega;
+	public JDatePickerImpl textFieldFechaEntrega;
 	private JTextField textFieldFechaBautismo;
 	private JTextField textFieldnombre;
 	private JTextField textFieldApellido;
@@ -69,7 +77,7 @@ public class GestionFeligres extends JFrame {
 	public JPanel panelRegistro3;
 	public JPanel panelModificacion;
 	public JPanel panelBusqueda;
-	
+	private Calendario ca = new Calendario();
 	/**
 	 * Create the frame.
 	 */
@@ -100,10 +108,13 @@ public class GestionFeligres extends JFrame {
 		panelRegistro1.add(textFieldCed);
 		textFieldCed.setColumns(10);
 		
-		textFieldFechaEntrega = new JTextField();
-		textFieldFechaEntrega.setBounds(275, 231, 201, 36);
+		textFieldFechaEntrega = new JDatePickerImpl(ca.GetCalendario(), new DateLabelFormatter());
+		textFieldFechaEntrega.getJFormattedTextField().setHorizontalAlignment(SwingConstants.CENTER);
+		SpringLayout springLayout = (SpringLayout) textFieldFechaEntrega.getLayout();
+		springLayout.putConstraint(SpringLayout.SOUTH, textFieldFechaEntrega.getJFormattedTextField(), 0, SpringLayout.SOUTH, textFieldFechaEntrega);
+		textFieldFechaEntrega.setBounds(275, 231, 201, 26);
 		panelRegistro1.add(textFieldFechaEntrega);
-		textFieldFechaEntrega.setColumns(10);
+		
 		
 		textFieldFechaBautismo = new JTextField();
 		textFieldFechaBautismo.setBounds(275, 289, 201, 36);

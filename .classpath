@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="src/com/planfelipe/librerias/miglayout15-swing.jar"/>
 	<classpathentry kind="lib" path="src/com/planfelipe/librerias/mysql-connector-java-5.1.36-bin.jar"/>
 	<classpathentry kind="lib" path="src/com/planfelipe/librerias/prompt.jar"/>
+	<classpathentry kind="lib" path="src/com/planfelipe/librerias/jdatepicker-1.3.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
