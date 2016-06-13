@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.planfelipe.Controlador.Control_PantallaMain;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.ImageIcon;
@@ -14,26 +17,18 @@ import java.awt.Color;
 import javax.swing.JToolBar;
 import javax.swing.JLabel;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PantallaMain extends JFrame {
 
 	private JPanel contentPane;
+	public JMenu mnGestionarGruposBiblicos;
+	public JMenu mnGestionarFeligrs;
+	public JMenu mnGestionarReportes;
+	public JMenu mnOpcionesDelSistema;
+	public JMenu mnNewAcerca;
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PantallaMain frame = new PantallaMain();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -58,28 +53,36 @@ public class PantallaMain extends JFrame {
 		menuBar.setBounds(0, 68, 1008, 66);
 		contentPane.add(menuBar);
 		
-		JMenu mnGestionarGruposBiblicos = new JMenu("Gestionar Grupos B\u00EDblicos");
+		mnGestionarGruposBiblicos = new JMenu("Gestionar Grupos B\u00EDblicos");
+		mnGestionarGruposBiblicos.setForeground(Color.BLACK);
+		
+		mnGestionarGruposBiblicos.addMouseListener(new Control_PantallaMain(this, "GruposBiblicos"));
 		mnGestionarGruposBiblicos.setIcon(new ImageIcon(PantallaMain.class.getResource("/com/planfelipe/imagenes/Grupo biblico.png")));
 		menuBar.add(mnGestionarGruposBiblicos);
 		
-		JMenuItem mntmSomething = new JMenuItem("Something");
-		mnGestionarGruposBiblicos.add(mntmSomething);
-		
-		JMenu mnGestionarFeligrs = new JMenu("Gestionar Feligr\u00E9s");
+		mnGestionarFeligrs = new JMenu("Gestionar Feligr\u00E9s");
+		mnGestionarFeligrs.addMouseListener(new Control_PantallaMain(this, "feligreses"));
+		mnGestionarFeligrs.setForeground(Color.BLACK);
 		mnGestionarFeligrs.setIcon(new ImageIcon(PantallaMain.class.getResource("/com/planfelipe/imagenes/command.png")));
 		menuBar.add(mnGestionarFeligrs);
 		
-		JMenu mnGestionarReportes = new JMenu("Gestionar Reportes");
+		mnGestionarReportes = new JMenu("Gestionar Reportes");
+		mnGestionarReportes.addMouseListener(new Control_PantallaMain(this, "Reportes"));
+		mnGestionarReportes.setForeground(Color.BLACK);
 		mnGestionarReportes.setIcon(new ImageIcon(PantallaMain.class.getResource("/com/planfelipe/imagenes/business-report.png")));
 		menuBar.add(mnGestionarReportes);
 		
-		JMenu mnOpcionesDelSistema = new JMenu("Opciones del Sistema");
+		mnOpcionesDelSistema = new JMenu("Opciones del Sistema");
+		mnOpcionesDelSistema.addMouseListener(new Control_PantallaMain(this, "OpcionesSistema"));
+		mnOpcionesDelSistema.setForeground(Color.BLACK);
 		mnOpcionesDelSistema.setIcon(new ImageIcon(PantallaMain.class.getResource("/com/planfelipe/imagenes/management.png")));
 		menuBar.add(mnOpcionesDelSistema);
 		
-		JMenu mnNewMenu = new JMenu("Acerca...");
-		mnNewMenu.setIcon(new ImageIcon(PantallaMain.class.getResource("/com/planfelipe/imagenes/more.png")));
-		menuBar.add(mnNewMenu);
+		mnNewAcerca = new JMenu("Acerca...");
+		mnNewAcerca.addMouseListener(new Control_PantallaMain(this, "Acerca"));
+		mnNewAcerca.setForeground(Color.BLACK);
+		mnNewAcerca.setIcon(new ImageIcon(PantallaMain.class.getResource("/com/planfelipe/imagenes/more.png")));
+		menuBar.add(mnNewAcerca);
 		
 		JLabel lblLogo = new JLabel("logo");
 		lblLogo.setIcon(new ImageIcon(PantallaMain.class.getResource("/com/planfelipe/imagenes/slogan-transparente-2016.png")));
