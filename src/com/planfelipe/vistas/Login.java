@@ -1,6 +1,7 @@
 package com.planfelipe.vistas;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -27,27 +28,14 @@ public class Login extends JFrame {
 	public JTextField txtUsuario;
 	public JPasswordField txtPass;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	
 	public Login() {
+		
+		setResizable(false);
 		setTitle("Login");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/com/planfelipe/imagenes/pequen_o-Pagina-2016.jpg")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

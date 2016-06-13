@@ -1,5 +1,7 @@
 package com.planfelipe.Controlador;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,6 +16,7 @@ public class Control_Login implements ActionListener{
 	private PantallaMain pan = new PantallaMain();
 	
 	public Control_Login(Login es, String cu){
+		pan.setResizable(false);
 		this.es = es;
 		this.cu = cu;
 		
@@ -28,6 +31,14 @@ public class Control_Login implements ActionListener{
 				&&(es.txtPass.getText().equals(""))){
 						
 				es.setVisible(false);
+				
+		        Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+		        //para obtener las dimensiones de la pantalla
+		        Dimension dimen = pan.getSize();
+		        //igual pero para la ventana
+		        pan.setLocation(
+		            (pantalla.width - dimen.width) / 2,
+		            (pantalla.height - dimen.height) / 2);
 				pan.setVisible(true);
 				
 			}

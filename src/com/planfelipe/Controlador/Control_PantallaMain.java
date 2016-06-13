@@ -1,6 +1,8 @@
 package com.planfelipe.Controlador;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -88,13 +90,26 @@ public class Control_PantallaMain implements MouseListener{
 	
 
 		if(cu.equals("GruposBiblicos")){
-			
+			Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+	        //para obtener las dimensiones de la pantalla
+	        Dimension dimen = gru.getSize();
+	        //igual pero para la ventana
+	        gru.setLocation(
+	            (pantalla.width - dimen.width) / 2,
+	            (pantalla.height - dimen.height) / 2);
 			gru.setVisible(true);
 			es.setVisible(false);
 			
 		}
 		if(cu.equals("feligreses")){
 		
+			Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+	        //para obtener las dimensiones de la pantalla
+	        Dimension dimen = fe.getSize();
+	        //igual pero para la ventana
+	        fe.setLocation(
+	            (pantalla.width - dimen.width) / 2,
+	            (pantalla.height - dimen.height) / 2);
 			fe.setVisible(true);
 			es.setVisible(false);
 			

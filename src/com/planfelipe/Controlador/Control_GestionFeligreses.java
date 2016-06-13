@@ -1,6 +1,10 @@
 package com.planfelipe.Controlador;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -8,7 +12,7 @@ import com.planfelipe.vistas.GestionFeligres;
 import com.planfelipe.vistas.Login;
 import com.planfelipe.vistas.PantallaMain;
 
-public class Control_GestionFeligreses implements MouseListener{
+public class Control_GestionFeligreses implements MouseListener, ActionListener{
 
 	private GestionFeligres es;
 	private String cu;
@@ -37,6 +41,15 @@ public class Control_GestionFeligreses implements MouseListener{
 		}
 		if(cu.equals("Regresar")){
 			es.setVisible(false);
+			
+			Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+	        //para obtener las dimensiones de la pantalla
+	        Dimension dimen = pan.getSize();
+	        //igual pero para la ventana
+	        pan.setLocation(
+	            (pantalla.width - dimen.width) / 2,
+	            (pantalla.height - dimen.height) / 2);
+			
 			pan.setVisible(true);
 		}
 		
@@ -85,7 +98,15 @@ public class Control_GestionFeligreses implements MouseListener{
 	}
 	
 	
-	
+	public void actionPerformed(ActionEvent e) {
+
+		if(cu.equals("Regresar_1")){
+			
+			es.panelPrincipal.setVisible(true);
+			es.panelRegistro1.setVisible(false);
+		}
+		
+	}
 	
 	
 	
@@ -106,4 +127,5 @@ public class Control_GestionFeligreses implements MouseListener{
 		// TODO Auto-generated method stub
 		
 	}
+
 }
