@@ -15,12 +15,17 @@ import javax.swing.border.EmptyBorder;
 
 import org.jdesktop.xswingx.PromptSupport;
 
+import com.planfelipe.Controlador.Control_GestionFeligreses;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JScrollBar;
 import java.awt.Scrollbar;
 import javax.swing.JButton;
-import javax.swing.JComboBox;	
+import javax.swing.JComboBox;
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;	
 
 public class GestionFeligres extends JFrame {
 
@@ -53,24 +58,16 @@ public class GestionFeligres extends JFrame {
 	private JTextField textFieldDirEdit;
 	private JTextField textFieldBarrioEdit;
 	private JTextField textFieldTelfEdit;
+	public JMenu mnRegistrar;
+	public JMenu mnBusqueda;
+	public JMenuItem mntmRegresar;
+	public JPanel panelPrincipal;
+	public JPanel panelRegistro2;
+	public JPanel panelRegistro1;
+	public JPanel panelRegistro3;
+	public JPanel panelModificacion;
+	public JPanel panelBusqueda;
 	
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GestionFeligres frame = new GestionFeligres();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the frame.
 	 */
@@ -83,7 +80,65 @@ public class GestionFeligres extends JFrame {
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 		
-		JPanel panelRegistro2 = new JPanel();
+		panelBusqueda = new JPanel();
+		panelBusqueda.setVisible(false);
+		panelBusqueda.setBounds(0, 0, 1008, 729);
+		contentPane.add(panelBusqueda);
+		panelBusqueda.setLayout(null);
+		
+		JLabel lblHead1 = new JLabel("");
+		lblHead1.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/EncabezadoBusqueda.png")));
+		lblHead1.setBounds(0, 0, 1008, 67);
+		panelBusqueda.add(lblHead1);
+		
+		JLabel lblWallp = new JLabel("");
+		lblWallp.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
+		lblWallp.setBounds(0, 67, 1008, 676);
+		panelBusqueda.add(lblWallp);
+		
+		panelPrincipal = new JPanel();
+		panelPrincipal.setBounds(0, 0, 1008, 729);
+		contentPane.add(panelPrincipal);
+		panelPrincipal.setLayout(null);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 68, 1008, 66);
+		panelPrincipal.add(menuBar);
+		
+		mnRegistrar = new JMenu("Registrar");
+		mnRegistrar.addMouseListener(new Control_GestionFeligreses(this, "Registrar"));
+		mnRegistrar.setForeground(Color.BLACK);
+		mnRegistrar.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/add-group-button.png")));
+		menuBar.add(mnRegistrar);
+		
+		mnBusqueda = new JMenu("Buscar y Modificar");
+		mnBusqueda.addMouseListener(new Control_GestionFeligreses(this, "BuscarModificar"));
+		mnBusqueda.setForeground(Color.BLACK);
+		mnBusqueda.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/group-editor.png")));
+		menuBar.add(mnBusqueda);
+		
+		mntmRegresar = new JMenuItem("Regresar");
+		mntmRegresar.addMouseListener(new Control_GestionFeligreses(this, "Regresar"));
+		mntmRegresar.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/return.png")));
+		menuBar.add(mntmRegresar);
+		
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setBounds(95, 159, 756, 533);
+		panelPrincipal.add(lblLogo);
+		lblLogo.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/slogan-transparente-2016.png")));
+		
+		JLabel lblHeader = new JLabel("header");
+		lblHeader.setBounds(0, 0, 1008, 67);
+		panelPrincipal.add(lblHeader);
+		lblHeader.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/EncabezadoGestionFeligres.png")));
+		
+		JLabel lblWallpaper = new JLabel("wallpaper");
+		lblWallpaper.setBounds(0, 129, 1008, 600);
+		panelPrincipal.add(lblWallpaper);
+		lblWallpaper.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
+		
+		panelRegistro2 = new JPanel();
+		panelRegistro2.setVisible(false);
 		panelRegistro2.setBounds(0, 0, 1008, 729);
 		contentPane.add(panelRegistro2);
 		panelRegistro2.setLayout(null);
@@ -236,7 +291,8 @@ public class GestionFeligres extends JFrame {
 		lblWall2.setBounds(0, 66, 1008, 663);
 		panelRegistro2.add(lblWall2);
 		
-		JPanel panelRegistro1 = new JPanel();
+		panelRegistro1 = new JPanel();
+		panelRegistro1.setVisible(false);
 		panelRegistro1.setBounds(0, 0, 1008, 729);
 		contentPane.add(panelRegistro1);
 		panelRegistro1.setLayout(null);
@@ -390,7 +446,8 @@ public class GestionFeligres extends JFrame {
 		lblWall.setBounds(10, 56, 1008, 662);
 		panelRegistro1.add(lblWall);
 		
-		JPanel panelRegistro3 = new JPanel();
+		panelRegistro3 = new JPanel();
+		panelRegistro3.setVisible(false);
 		panelRegistro3.setBounds(0, 0, 1008, 729);
 		contentPane.add(panelRegistro3);
 		panelRegistro3.setLayout(null);
@@ -525,43 +582,8 @@ public class GestionFeligres extends JFrame {
 		lblwall3.setBounds(0, 67, 1008, 662);
 		panelRegistro3.add(lblwall3);
 		
-		JPanel panelPrincipal = new JPanel();
-		panelPrincipal.setBounds(0, 0, 1008, 729);
-		contentPane.add(panelPrincipal);
-		panelPrincipal.setLayout(null);
-		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 68, 1008, 66);
-		panelPrincipal.add(menuBar);
-		
-		JMenu mnRegistrar = new JMenu("Registrar");
-		mnRegistrar.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/add-group-button.png")));
-		menuBar.add(mnRegistrar);
-		
-		JMenu mnBusqueda = new JMenu("Buscar y Modificar");
-		mnBusqueda.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/group-editor.png")));
-		menuBar.add(mnBusqueda);
-		
-		JMenuItem mntmRegresar = new JMenuItem("Regresar");
-		mntmRegresar.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/return.png")));
-		menuBar.add(mntmRegresar);
-		
-		JLabel lblLogo = new JLabel("");
-		lblLogo.setBounds(95, 159, 756, 533);
-		panelPrincipal.add(lblLogo);
-		lblLogo.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/slogan-transparente-2016.png")));
-		
-		JLabel lblHeader = new JLabel("header");
-		lblHeader.setBounds(0, 0, 1008, 67);
-		panelPrincipal.add(lblHeader);
-		lblHeader.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/EncabezadoGestionFeligres.png")));
-		
-		JLabel lblWallpaper = new JLabel("wallpaper");
-		lblWallpaper.setBounds(0, 129, 1008, 600);
-		panelPrincipal.add(lblWallpaper);
-		lblWallpaper.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
-		
-		JPanel panelModificacion = new JPanel();
+		panelModificacion = new JPanel();
+		panelModificacion.setVisible(false);
 		panelModificacion.setBounds(0, 0, 1008, 729);
 		contentPane.add(panelModificacion);
 		panelModificacion.setLayout(null);
@@ -653,20 +675,5 @@ public class GestionFeligres extends JFrame {
 		lblWallpp.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
 		lblWallpp.setBounds(0, 67, 1008, 662);
 		panelModificacion.add(lblWallpp);
-		
-		JPanel panelBusqueda = new JPanel();
-		panelBusqueda.setBounds(0, 0, 1008, 729);
-		contentPane.add(panelBusqueda);
-		panelBusqueda.setLayout(null);
-		
-		JLabel lblHead1 = new JLabel("");
-		lblHead1.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/EncabezadoBusqueda.png")));
-		lblHead1.setBounds(0, 0, 1008, 67);
-		panelBusqueda.add(lblHead1);
-		
-		JLabel lblWallp = new JLabel("");
-		lblWallp.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
-		lblWallp.setBounds(0, 67, 1008, 676);
-		panelBusqueda.add(lblWallp);
 	}
 }

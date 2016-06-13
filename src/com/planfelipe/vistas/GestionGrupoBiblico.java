@@ -141,6 +141,58 @@ public class GestionGrupoBiblico extends JFrame {
 		panelPrincipal.add(lblWallpaper);
 		lblWallpaper.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
 		
+		JPanel panelListado = new JPanel();
+		panelListado.setBounds(0, 0, 1008, 729);
+		contentPane.add(panelListado);
+		panelListado.setLayout(null);
+		
+		JLabel lblHeader2 = new JLabel("New label");
+		lblHeader2.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/EncabezadoListado.png")));
+		lblHeader2.setBounds(0, 0, 1008, 67);
+		panelListado.add(lblHeader2);
+		
+		JLabel lblNewLabel_2 = new JLabel("Listar por:");
+		lblNewLabel_2.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblNewLabel_2.setBounds(150, 99, 75, 22);
+		panelListado.add(lblNewLabel_2);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "Codigo de grupo b\u00EDblico", "Felipe Lider", "Felipe de Grupos"}));
+		comboBox.setBounds(237, 95, 234, 36);
+		panelListado.add(comboBox);
+		
+		textField = new JTextField();
+		textField.setBounds(481, 95, 234, 36);
+		panelListado.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnBuscar3 = new JButton("");
+		btnBuscar3.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonBuscar.JPG")));
+		btnBuscar3.setBounds(735, 92, 154, 41);
+		panelListado.add(btnBuscar3);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(106, 198, 776, 394);
+		panelListado.add(scrollPane);
+		
+		tableListado = new JTable();
+		scrollPane.setViewportView(tableListado);
+		
+		JButton buttonExportar = new JButton("");
+		buttonExportar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonExportar.JPG")));
+		buttonExportar.setBounds(553, 630, 324, 61);
+		panelListado.add(buttonExportar);
+		
+		JButton buttonRegresar4 = new JButton("");
+		buttonRegresar4.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
+		buttonRegresar4.setBounds(116, 630, 324, 61);
+		panelListado.add(buttonRegresar4);
+		
+		JLabel labelWallpaper4 = new JLabel("");
+		labelWallpaper4.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
+		labelWallpaper4.setBounds(0, 66, 1008, 663);
+		panelListado.add(labelWallpaper4);
+		
 		JPanel panelRegistro = new JPanel();
 		panelRegistro.setBounds(0, 0, 1008, 729);
 		contentPane.add(panelRegistro);
@@ -631,57 +683,5 @@ public class GestionGrupoBiblico extends JFrame {
 		lblWallpaper3.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
 		lblWallpaper3.setBounds(0, 67, 1008, 662);
 		panelInformes_2.add(lblWallpaper3);
-		
-		JPanel panelListado = new JPanel();
-		panelListado.setBounds(0, 0, 1008, 729);
-		contentPane.add(panelListado);
-		panelListado.setLayout(null);
-		
-		JLabel lblHeader2 = new JLabel("New label");
-		lblHeader2.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/EncabezadoListado.png")));
-		lblHeader2.setBounds(0, 0, 1008, 67);
-		panelListado.add(lblHeader2);
-		
-		JLabel lblNewLabel_2 = new JLabel("Listar por:");
-		lblNewLabel_2.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblNewLabel_2.setBounds(150, 99, 75, 22);
-		panelListado.add(lblNewLabel_2);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "Codigo de grupo b\u00EDblico", "Felipe Lider", "Felipe de Grupos"}));
-		comboBox.setBounds(237, 95, 234, 36);
-		panelListado.add(comboBox);
-		
-		textField = new JTextField();
-		textField.setBounds(481, 95, 234, 36);
-		panelListado.add(textField);
-		textField.setColumns(10);
-		
-		JButton btnBuscar3 = new JButton("");
-		btnBuscar3.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonBuscar.JPG")));
-		btnBuscar3.setBounds(735, 92, 154, 41);
-		panelListado.add(btnBuscar3);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(106, 198, 776, 394);
-		panelListado.add(scrollPane);
-		
-		tableListado = new JTable();
-		scrollPane.setViewportView(tableListado);
-		
-		JButton buttonExportar = new JButton("");
-		buttonExportar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonExportar.JPG")));
-		buttonExportar.setBounds(553, 630, 324, 61);
-		panelListado.add(buttonExportar);
-		
-		JButton buttonRegresar4 = new JButton("");
-		buttonRegresar4.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
-		buttonRegresar4.setBounds(116, 630, 324, 61);
-		panelListado.add(buttonRegresar4);
-		
-		JLabel labelWallpaper4 = new JLabel("");
-		labelWallpaper4.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
-		labelWallpaper4.setBounds(0, 66, 1008, 663);
-		panelListado.add(labelWallpaper4);
 	}
 }

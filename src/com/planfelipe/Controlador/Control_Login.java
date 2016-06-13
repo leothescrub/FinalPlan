@@ -24,8 +24,8 @@ public class Control_Login implements ActionListener{
 		
 		if(cu.equals("Inicio")){
 			
-			if((es.txtUsuario.getText().equals("admin"))
-				&&(es.txtPass.getText().equals("admin"))){
+			if((es.txtUsuario.getText().equals(""))
+				&&(es.txtPass.getText().equals(""))){
 						
 				es.setVisible(false);
 				pan.setVisible(true);
