@@ -30,10 +30,27 @@ public class PantallaMain extends JFrame {
 	public JMenu mnNewAcerca;
 	
 
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PantallaMain frame = new PantallaMain();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
 	/**
 	 * Create the frame.
 	 */
-
+	
 	public PantallaMain() {
 		setTitle("Men\u00FA Principal");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(PantallaMain.class.getResource("/com/planfelipe/imagenes/pequen_o-Pagina-2016.jpg")));
