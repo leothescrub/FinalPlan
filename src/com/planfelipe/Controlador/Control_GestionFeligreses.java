@@ -106,10 +106,11 @@ public class Control_GestionFeligreses implements MouseListener, ActionListener{
  */
 		
 		if(cu.equals("Regresar_1")){
-			
+		
 			es.panelPrincipal.setVisible(true);
 			
 			es.panelRegistro1.setVisible(false);
+			es.textFieldFechaEntrega.getJFormattedTextField().setText("");
 		}
 		
 	}

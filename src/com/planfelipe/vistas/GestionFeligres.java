@@ -78,6 +78,7 @@ public class GestionFeligres extends JFrame {
 	public JPanel panelModificacion;
 	public JPanel panelBusqueda;
 	private Calendario ca = new Calendario();
+	
 	/**
 	 * Create the frame.
 	 */
@@ -109,6 +110,7 @@ public class GestionFeligres extends JFrame {
 		textFieldCed.setColumns(10);
 		
 		textFieldFechaEntrega = new JDatePickerImpl(ca.GetCalendario(), new DateLabelFormatter());
+		textFieldFechaEntrega.setToolTipText("");
 		textFieldFechaEntrega.getJFormattedTextField().setHorizontalAlignment(SwingConstants.CENTER);
 		SpringLayout springLayout = (SpringLayout) textFieldFechaEntrega.getLayout();
 		springLayout.putConstraint(SpringLayout.SOUTH, textFieldFechaEntrega.getJFormattedTextField(), 0, SpringLayout.SOUTH, textFieldFechaEntrega);
