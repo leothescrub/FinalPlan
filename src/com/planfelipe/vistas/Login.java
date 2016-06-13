@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 
 import org.jdesktop.xswingx.PromptSupport;
 
+import com.planfelipe.Controlador.Control_Login;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
@@ -16,12 +18,14 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Toolkit;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtUsuario;
-	private JPasswordField txtPass;
+	public JTextField txtUsuario;
+	public JPasswordField txtPass;
 
 	/**
 	 * Launch the application.
@@ -65,7 +69,9 @@ public class Login extends JFrame {
 		contentPane.add(txtPass);
 		
 		JButton btnNewButton = new JButton("");
+	
 		btnNewButton.setIcon(new ImageIcon(Login.class.getResource("/com/planfelipe/imagenes/Button.png")));
+		btnNewButton.addActionListener(new Control_Login(this, "Inicio"));
 		btnNewButton.setBounds(329, 476, 346, 57);
 		contentPane.add(btnNewButton);
 		
