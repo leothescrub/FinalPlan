@@ -8,7 +8,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import org.jdatepicker.impl.JDatePickerImpl;
+
 import com.planfelipe.Class.Calendario;
+import com.planfelipe.Class.DateLabelFormatter;
 import com.planfelipe.vistas.GestionFeligres;
 import com.planfelipe.vistas.Login;
 import com.planfelipe.vistas.PantallaMain;
@@ -17,7 +20,7 @@ public class Control_GestionFeligreses implements MouseListener, ActionListener{
 
 	private GestionFeligres es;
 	private String cu;
-
+	private Calendario q = new Calendario();
 	
 	public Control_GestionFeligreses(GestionFeligres es, String cu){
 		this.es = es;
@@ -31,6 +34,8 @@ public class Control_GestionFeligreses implements MouseListener, ActionListener{
 		if(cu.equals("Registrar")){
 			
 			es.panelPrincipal.setVisible(false);
+		
+		
 			es.panelRegistro1.setVisible(true);
 			
 		}
@@ -104,15 +109,57 @@ public class Control_GestionFeligreses implements MouseListener, ActionListener{
 /*
  * eventos que se generan el panelRegistro_1
  */
-		
+	 
 		if(cu.equals("Regresar_1")){
 		
 			es.panelPrincipal.setVisible(true);
-			
+		
+			//es.textFieldFechaEntrega = new JDatePickerImpl(q.GetCalendario(), new DateLabelFormatter());
 			es.panelRegistro1.setVisible(false);
-			es.textFieldFechaEntrega.getJFormattedTextField().setText("");
+		
 		}
 		
+		if(cu.equals("Siguiente_1")){
+	
+			es.panelRegistro1.setVisible(false);
+			es.panelRegistro2.setVisible(true);
+			
+		}
+		/*
+		 * eventos que se generan el panelRegistro_2
+		 */
+		
+		if(cu.equals("Regresar_2")){
+			
+			es.panelRegistro1.setVisible(true);
+			es.panelRegistro2.setVisible(false);
+			
+		}
+		
+
+		if(cu.equals("Siguiente_2")){
+			
+			es.panelRegistro3.setVisible(true);
+			es.panelRegistro2.setVisible(false);
+			
+		}
+		
+		/*
+		 * eventos que se generan el panelRegistro_3
+		 */
+		if(cu.equals("Regresar_3")){
+			
+			es.panelRegistro3.setVisible(false);
+			es.panelRegistro2.setVisible(true);
+			
+		}
+		
+
+		if(cu.equals("Registrar")){
+			
+			System.out.println("registrando");
+			
+		}
 	}
 	
 	

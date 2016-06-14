@@ -28,6 +28,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.JDatePanelImpl;
+import javax.swing.JFormattedTextField.AbstractFormatter;
 
 public class GestionGrupoBiblico extends JFrame {
 
@@ -137,7 +140,7 @@ public class GestionGrupoBiblico extends JFrame {
 		lblHeader.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Encabezado gestion grupos.png")));
 		
 		JLabel lblWallpaper = new JLabel("wallpaper");
-		lblWallpaper.setBounds(0, 129, 1008, 600);
+		lblWallpaper.setBounds(0, 129, 1018, 600);
 		panelPrincipal.add(lblWallpaper);
 		lblWallpaper.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
 		
