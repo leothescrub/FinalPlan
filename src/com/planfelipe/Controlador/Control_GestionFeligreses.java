@@ -117,6 +117,9 @@ public class Control_GestionFeligreses implements MouseListener, ActionListener{
 			es.textFieldFechaNac.hidePopup();
 			es.textFieldFechaEntrega.hidePopup();
 			es.textFieldFechaBautismo.hidePopup();
+			es.textFieldFechaNac.getJFormattedTextField().setText("");
+			es.textFieldFechaEntrega.getJFormattedTextField().setText("");
+			es.textFieldFechaBautismo.getJFormattedTextField().setText("");
 			
 			es.panelRegistro1.setVisible(false);
 		
@@ -126,6 +129,10 @@ public class Control_GestionFeligreses implements MouseListener, ActionListener{
 	
 			es.panelRegistro1.setVisible(false);
 			es.panelRegistro2.setVisible(true);
+			
+			es.textFieldFechaNac.hidePopup();
+			es.textFieldFechaEntrega.hidePopup();
+			es.textFieldFechaBautismo.hidePopup();
 			
 		}
 		/*
@@ -137,6 +144,9 @@ public class Control_GestionFeligreses implements MouseListener, ActionListener{
 			es.panelRegistro1.setVisible(true);
 			es.panelRegistro2.setVisible(false);
 			
+			es.textFieldFechaContacto.hidePopup();
+			es.textFieldFechaConver.hidePopup();
+			
 		}
 		
 
@@ -144,6 +154,9 @@ public class Control_GestionFeligreses implements MouseListener, ActionListener{
 			
 			es.panelRegistro3.setVisible(true);
 			es.panelRegistro2.setVisible(false);
+		
+			es.textFieldFechaContacto.hidePopup();
+			es.textFieldFechaConver.hidePopup();
 			
 		}
 		

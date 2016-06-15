@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 
 import org.jdesktop.xswingx.PromptSupport;
 
+import com.planfelipe.Controlador.Control_GruposBiblico;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JMenuBar;
@@ -31,6 +33,7 @@ import javax.swing.JTable;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.JDatePanelImpl;
 import javax.swing.JFormattedTextField.AbstractFormatter;
+import java.awt.Color;
 
 public class GestionGrupoBiblico extends JFrame {
 
@@ -70,22 +73,18 @@ public class GestionGrupoBiblico extends JFrame {
 	private JTextField textFieldOfrendaNinos;
 	private JTextField textField;
 	private JTable tableListado;
+	public JMenu mnRegistrar;
+	public JMenu mnModificar;
+	public JMenu mnAgregarInfor;
+	public JMenu mnListar;
+	public JMenuItem mntmRegresar;
+	public JPanel panelRegistro;
+	public JPanel panelPrincipal;
+	public JPanel panelListado;
+	public JPanel panelModificacion;
+	public JPanel panelInformes;
+	public JPanel panelInformes_1;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GestionGrupoBiblico frame = new GestionGrupoBiblico();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -100,51 +99,338 @@ public class GestionGrupoBiblico extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panelPrincipal = new JPanel();
-		panelPrincipal.setBounds(0, 0, 1008, 729);
-		contentPane.add(panelPrincipal);
-		panelPrincipal.setLayout(null);
+		panelRegistro = new JPanel();
+		panelRegistro.setVisible(false);
 		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 68, 1008, 66);
-		panelPrincipal.add(menuBar);
+		panelModificacion = new JPanel();
+		panelModificacion.setVisible(false);
 		
-		JMenu mnRegistrar = new JMenu("Registrar");
-		mnRegistrar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/add-group-button.png")));
-		menuBar.add(mnRegistrar);
+		panelListado = new JPanel();
+		panelListado.setVisible(false);
 		
-		JMenu mnNewMenu = new JMenu("Modificar");
-		mnNewMenu.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/group-editor.png")));
-		menuBar.add(mnNewMenu);
+		panelInformes = new JPanel();
+		panelInformes.setVisible(false);
 		
-		JMenu mnNewMenu_1 = new JMenu("Agregar informes semanales");
-		mnNewMenu_1.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/business-report.png")));
-		menuBar.add(mnNewMenu_1);
+		panelInformes_1 = new JPanel();
+		panelInformes_1.setVisible(false);
+		panelInformes_1.setBounds(0, 0, 1008, 729);
+		contentPane.add(panelInformes_1);
+		panelInformes_1.setLayout(null);
 		
-		JMenu mnListar = new JMenu("Listar...");
-		mnListar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/numbered-list.png")));
-		menuBar.add(mnListar);
+		JLabel labelHead = new JLabel("");
+		labelHead.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/EncabezadoInformes.png")));
+		labelHead.setBounds(0, 0, 1008, 67);
+		panelInformes_1.add(labelHead);
 		
-		JMenuItem mntmRegresar = new JMenuItem("Regresar");
-		mntmRegresar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/return.png")));
-		menuBar.add(mntmRegresar);
+		JLabel lblMisinAmigo = new JLabel("Misi\u00F3n Amigo:");
+		lblMisinAmigo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblMisinAmigo.setBounds(88, 141, 100, 22);
+		panelInformes_1.add(lblMisinAmigo);
 		
-		JLabel lblLogo = new JLabel("");
-		lblLogo.setBounds(95, 159, 756, 533);
-		panelPrincipal.add(lblLogo);
-		lblLogo.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/slogan-transparente-2016.png")));
+		JLabel lblNewLabel = new JLabel("Consolidaci\u00F3n:");
+		lblNewLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblNewLabel.setBounds(88, 194, 101, 14);
+		panelInformes_1.add(lblNewLabel);
 		
-		JLabel lblHeader = new JLabel("header");
-		lblHeader.setBounds(0, 0, 1008, 67);
-		panelPrincipal.add(lblHeader);
-		lblHeader.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Encabezado gestion grupos.png")));
+		JLabel lblDiscipulado = new JLabel("Discipulado 1:");
+		lblDiscipulado.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblDiscipulado.setBounds(88, 254, 100, 22);
+		panelInformes_1.add(lblDiscipulado);
 		
-		JLabel lblWallpaper = new JLabel("wallpaper");
-		lblWallpaper.setBounds(0, 129, 1018, 600);
-		panelPrincipal.add(lblWallpaper);
-		lblWallpaper.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
+		JLabel lblAsisDomHermanos = new JLabel("Asis. Dom. Hermanos:");
+		lblAsisDomHermanos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblAsisDomHermanos.setBounds(38, 315, 151, 14);
+		panelInformes_1.add(lblAsisDomHermanos);
 		
-		JPanel panelListado = new JPanel();
+		JLabel lblAsisDomAmigos = new JLabel("Asis. Dom. Amigos:");
+		lblAsisDomAmigos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblAsisDomAmigos.setBounds(56, 372, 132, 22);
+		panelInformes_1.add(lblAsisDomAmigos);
+		
+		JLabel lblAsisDomNios = new JLabel("Asis. Dom. Ni\u00F1os:");
+		lblAsisDomNios.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblAsisDomNios.setBounds(70, 437, 132, 14);
+		panelInformes_1.add(lblAsisDomNios);
+		
+		JLabel lblAsisDomVea = new JLabel("Asis. V.E.A:");
+		lblAsisDomVea.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblAsisDomVea.setBounds(650, 149, 72, 14);
+		panelInformes_1.add(lblAsisDomVea);
+		
+		JLabel lblAsisEscuelaDe = new JLabel("Asis. Escuela de Liderazgo:");
+		lblAsisEscuelaDe.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblAsisEscuelaDe.setBounds(540, 190, 182, 22);
+		panelInformes_1.add(lblAsisEscuelaDe);
+		
+		JLabel lblNewLabel_1 = new JLabel("Visitas realizadas:");
+		lblNewLabel_1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblNewLabel_1.setBounds(596, 258, 126, 14);
+		panelInformes_1.add(lblNewLabel_1);
+		
+		JLabel lblOfrendaMisionera = new JLabel("Ofrenda misionera:");
+		lblOfrendaMisionera.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblOfrendaMisionera.setBounds(589, 315, 133, 14);
+		panelInformes_1.add(lblOfrendaMisionera);
+		
+		JLabel lblOfrendaNios = new JLabel("Ofrenda Ni\u00F1os:");
+		lblOfrendaNios.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblOfrendaNios.setBounds(617, 376, 105, 14);
+		panelInformes_1.add(lblOfrendaNios);
+		
+		textFieldMisionamigo = new JTextField();
+		textFieldMisionamigo.setBounds(212, 137, 234, 36);
+		panelInformes_1.add(textFieldMisionamigo);
+		textFieldMisionamigo.setColumns(10);
+		
+		textFieldConsolidacion = new JTextField();
+		textFieldConsolidacion.setBounds(212, 186, 234, 36);
+		panelInformes_1.add(textFieldConsolidacion);
+		textFieldConsolidacion.setColumns(10);
+		
+		textFieldDiscipulado1 = new JTextField();
+		textFieldDiscipulado1.setText("");
+		textFieldDiscipulado1.setBounds(212, 246, 234, 36);
+		panelInformes_1.add(textFieldDiscipulado1);
+		textFieldDiscipulado1.setColumns(10);
+		
+		textFieldHermanosDom = new JTextField();
+		textFieldHermanosDom.setBounds(212, 307, 234, 36);
+		panelInformes_1.add(textFieldHermanosDom);
+		textFieldHermanosDom.setColumns(10);
+		
+		textFieldAmigosDom = new JTextField();
+		textFieldAmigosDom.setText("");
+		textFieldAmigosDom.setBounds(212, 368, 234, 36);
+		panelInformes_1.add(textFieldAmigosDom);
+		textFieldAmigosDom.setColumns(10);
+		
+		textFieldNinosDom = new JTextField();
+		textFieldNinosDom.setText("");
+		textFieldNinosDom.setBounds(212, 429, 234, 36);
+		panelInformes_1.add(textFieldNinosDom);
+		textFieldNinosDom.setColumns(10);
+		
+		textFieldVEA = new JTextField();
+		textFieldVEA.setBounds(740, 137, 234, 36);
+		panelInformes_1.add(textFieldVEA);
+		textFieldVEA.setColumns(10);
+		
+		textFieldEscuela = new JTextField();
+		textFieldEscuela.setText("");
+		textFieldEscuela.setBounds(740, 186, 234, 36);
+		panelInformes_1.add(textFieldEscuela);
+		textFieldEscuela.setColumns(10);
+		
+		textFieldVisitas = new JTextField();
+		textFieldVisitas.setBounds(740, 250, 234, 36);
+		panelInformes_1.add(textFieldVisitas);
+		textFieldVisitas.setColumns(10);
+		
+		textFieldOfrendaMisionera = new JTextField();
+		textFieldOfrendaMisionera.setBounds(740, 307, 234, 36);
+		panelInformes_1.add(textFieldOfrendaMisionera);
+		textFieldOfrendaMisionera.setColumns(10);
+		
+		textFieldOfrendaNinos = new JTextField();
+		textFieldOfrendaNinos.setText("");
+		textFieldOfrendaNinos.setBounds(740, 368, 234, 36);
+		panelInformes_1.add(textFieldOfrendaNinos);
+		textFieldOfrendaNinos.setColumns(10);
+		
+		JButton buttonGuardar = new JButton("");
+		buttonGuardar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonGuardarInforme.JPG")));
+		buttonGuardar.setBounds(571, 563, 324, 61);
+		panelInformes_1.add(buttonGuardar);
+		
+		JButton buttonRegresar = new JButton("");
+		buttonRegresar.addActionListener(new Control_GruposBiblico(this, "btnRegresarInfo_1"));		
+		buttonRegresar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
+		buttonRegresar.setBounds(116, 563, 324, 61);
+		panelInformes_1.add(buttonRegresar);
+		
+		JLabel labelAdvise = new JLabel("");
+		labelAdvise.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/notification_u4i_03.png")));
+		labelAdvise.setBounds(240, 664, 519, 41);
+		panelInformes_1.add(labelAdvise);
+		
+		JLabel lblWallpaper3 = new JLabel("");
+		lblWallpaper3.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
+		lblWallpaper3.setBounds(0, 67, 1008, 662);
+		panelInformes_1.add(lblWallpaper3);
+		panelInformes.setBounds(0, 0, 1008, 729);
+		contentPane.add(panelInformes);
+		panelInformes.setLayout(null);
+		
+		JLabel lblHead4 = new JLabel("New label");
+		lblHead4.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/EncabezadoInformes.png")));
+		lblHead4.setBounds(0, 0, 1008, 67);
+		panelInformes.add(lblHead4);
+		
+		JLabel lblCdigoDelGrupo = new JLabel("C\u00F3digo del grupo b\u00EDblico:");
+		lblCdigoDelGrupo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblCdigoDelGrupo.setBounds(188, 111, 174, 22);
+		panelInformes.add(lblCdigoDelGrupo);
+		
+		textFieldCodigoGrupo = new JTextField();
+		textFieldCodigoGrupo.setBounds(385, 110, 234, 31);
+		panelInformes.add(textFieldCodigoGrupo);
+		textFieldCodigoGrupo.setColumns(10);
+		
+		JButton btnBuscar2 = new JButton("");
+		btnBuscar2.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonBuscar.JPG")));
+		btnBuscar2.setBounds(653, 106, 154, 41);
+		panelInformes.add(btnBuscar2);
+		
+		JLabel lblFecha = new JLabel("Fecha:");
+		lblFecha.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblFecha.setBounds(64, 214, 48, 14);
+		panelInformes.add(lblFecha);
+		
+		textFieldFechaReporte = new JTextField();
+		textFieldFechaReporte.setEditable(false);
+		textFieldFechaReporte.setBounds(122, 206, 234, 36);
+		panelInformes.add(textFieldFechaReporte);
+		textFieldFechaReporte.setColumns(10);
+		
+		JLabel lblFelipes = new JLabel("Felipes:");
+		lblFelipes.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblFelipes.setBounds(59, 262, 51, 22);
+		panelInformes.add(lblFelipes);
+		
+		JLabel lblEtopes = new JLabel("Et\u00EDopes:");
+		lblEtopes.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblEtopes.setBounds(59, 320, 53, 22);
+		panelInformes.add(lblEtopes);
+		
+		JLabel lblAmigos = new JLabel("Amigos:");
+		lblAmigos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblAmigos.setBounds(56, 370, 56, 22);
+		panelInformes.add(lblAmigos);
+		
+		JLabel lblNios = new JLabel("Ni\u00F1os:");
+		lblNios.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblNios.setBounds(66, 431, 46, 14);
+		panelInformes.add(lblNios);
+		
+		JLabel lblAusentes = new JLabel("Ausentes:");
+		lblAusentes.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblAusentes.setBounds(46, 478, 66, 22);
+		panelInformes.add(lblAusentes);
+		
+		JLabel lblDiezmos = new JLabel("Diezmos:");
+		lblDiezmos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblDiezmos.setBounds(638, 374, 66, 14);
+		panelInformes.add(lblDiezmos);
+		
+		JLabel lblOfrenda = new JLabel("Ofrenda:");
+		lblOfrenda.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblOfrenda.setBounds(640, 431, 64, 14);
+		panelInformes.add(lblOfrenda);
+		
+		JLabel lblOfrendaBus = new JLabel("Ofrenda Bus:");
+		lblOfrendaBus.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblOfrendaBus.setBounds(610, 485, 89, 14);
+		panelInformes.add(lblOfrendaBus);
+		
+		JLabel lblConversionesDeAdultos = new JLabel("Conversiones de Adultos:");
+		lblConversionesDeAdultos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblConversionesDeAdultos.setBounds(522, 213, 189, 17);
+		panelInformes.add(lblConversionesDeAdultos);
+		
+		JLabel lblConversionesDeNios = new JLabel("Conversiones de ni\u00F1os:");
+		lblConversionesDeNios.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblConversionesDeNios.setBounds(539, 276, 160, 14);
+		panelInformes.add(lblConversionesDeNios);
+		
+		JLabel lblReconciliaciones = new JLabel("Reconciliaciones:");
+		lblReconciliaciones.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblReconciliaciones.setBounds(582, 324, 117, 14);
+		panelInformes.add(lblReconciliaciones);
+		
+		textFieldFelipes = new JTextField();
+		textFieldFelipes.setEditable(false);
+		textFieldFelipes.setBounds(122, 258, 234, 36);
+		panelInformes.add(textFieldFelipes);
+		textFieldFelipes.setColumns(10);
+		
+		textFieldEtiopes = new JTextField();
+		textFieldEtiopes.setEditable(false);
+		textFieldEtiopes.setBounds(122, 316, 234, 36);
+		panelInformes.add(textFieldEtiopes);
+		textFieldEtiopes.setColumns(10);
+		
+		textFieldAmigos = new JTextField();
+		textFieldAmigos.setEditable(false);
+		textFieldAmigos.setBounds(122, 366, 234, 36);
+		panelInformes.add(textFieldAmigos);
+		textFieldAmigos.setColumns(10);
+		
+		textFieldNinos = new JTextField();
+		textFieldNinos.setEditable(false);
+		textFieldNinos.setText("");
+		textFieldNinos.setBounds(122, 423, 234, 36);
+		panelInformes.add(textFieldNinos);
+		textFieldNinos.setColumns(10);
+		
+		textFieldAusentes = new JTextField();
+		textFieldAusentes.setEditable(false);
+		textFieldAusentes.setText("");
+		textFieldAusentes.setBounds(122, 474, 234, 36);
+		panelInformes.add(textFieldAusentes);
+		textFieldAusentes.setColumns(10);
+		
+		textFieldConversionesAdultos = new JTextField();
+		textFieldConversionesAdultos.setEditable(false);
+		textFieldConversionesAdultos.setBounds(722, 206, 234, 36);
+		panelInformes.add(textFieldConversionesAdultos);
+		textFieldConversionesAdultos.setColumns(10);
+		
+		textFieldConversionesNinos = new JTextField();
+		textFieldConversionesNinos.setEditable(false);
+		textFieldConversionesNinos.setBounds(722, 268, 234, 36);
+		panelInformes.add(textFieldConversionesNinos);
+		textFieldConversionesNinos.setColumns(10);
+		
+		textFieldReconciliaciones = new JTextField();
+		textFieldReconciliaciones.setEditable(false);
+		textFieldReconciliaciones.setBounds(722, 316, 234, 36);
+		panelInformes.add(textFieldReconciliaciones);
+		textFieldReconciliaciones.setColumns(10);
+		
+		textFieldDiezmos = new JTextField();
+		textFieldDiezmos.setEditable(false);
+		textFieldDiezmos.setBounds(722, 366, 234, 36);
+		panelInformes.add(textFieldDiezmos);
+		textFieldDiezmos.setColumns(10);
+		
+		textFieldOfrenda = new JTextField();
+		textFieldOfrenda.setEditable(false);
+		textFieldOfrenda.setBounds(722, 423, 234, 36);
+		panelInformes.add(textFieldOfrenda);
+		textFieldOfrenda.setColumns(10);
+		
+		textFieldOfrendaBus = new JTextField();
+		textFieldOfrendaBus.setEditable(false);
+		textFieldOfrendaBus.setBounds(722, 474, 234, 36);
+		panelInformes.add(textFieldOfrendaBus);
+		textFieldOfrendaBus.setColumns(10);
+		
+		JButton btnRegresar3 = new JButton("");
+		btnRegresar3.addActionListener(new Control_GruposBiblico(this, "btnRegresarInfo"));
+		btnRegresar3.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
+		btnRegresar3.setBounds(116, 563, 324, 61);
+		panelInformes.add(btnRegresar3);
+		
+		JButton btnSiguiente = new JButton("New button");
+		btnSiguiente.addActionListener(new Control_GruposBiblico(this, "SiguenteInfo"));
+		btnSiguiente.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonSiguiente.jpg")));
+		btnSiguiente.setBounds(571, 563, 324, 61);
+		panelInformes.add(btnSiguiente);
+		
+		JLabel lblWallpaper2 = new JLabel("");
+		lblWallpaper2.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
+		lblWallpaper2.setBounds(0, 69, 1008, 660);
+		panelInformes.add(lblWallpaper2);
 		panelListado.setBounds(0, 0, 1008, 729);
 		contentPane.add(panelListado);
 		panelListado.setLayout(null);
@@ -187,6 +473,7 @@ public class GestionGrupoBiblico extends JFrame {
 		panelListado.add(buttonExportar);
 		
 		JButton buttonRegresar4 = new JButton("");
+		buttonRegresar4.addActionListener(new Control_GruposBiblico(this, "RegresarList"));
 		buttonRegresar4.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
 		buttonRegresar4.setBounds(116, 630, 324, 61);
 		panelListado.add(buttonRegresar4);
@@ -195,85 +482,6 @@ public class GestionGrupoBiblico extends JFrame {
 		labelWallpaper4.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
 		labelWallpaper4.setBounds(0, 66, 1008, 663);
 		panelListado.add(labelWallpaper4);
-		
-		JPanel panelRegistro = new JPanel();
-		panelRegistro.setBounds(0, 0, 1008, 729);
-		contentPane.add(panelRegistro);
-		panelRegistro.setLayout(null);
-		
-		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(457, 174, 234, 36);
-		panelRegistro.add(textFieldNombre);
-		textFieldNombre.setColumns(10);
-		PromptSupport.setPrompt("Ej: Los Pitufos", textFieldNombre);
-		
-		textFieldCodigo = new JTextField();
-		textFieldCodigo.setBounds(457, 221, 234, 36);
-		panelRegistro.add(textFieldCodigo);
-		textFieldCodigo.setColumns(10);
-		PromptSupport.setPrompt("Ej: 12345", textFieldCodigo);
-		
-		textFieldFelipeLider = new JTextField();
-		textFieldFelipeLider.setBounds(457, 264, 234, 36);
-		panelRegistro.add(textFieldFelipeLider);
-		textFieldFelipeLider.setColumns(10);
-		PromptSupport.setPrompt("Ej: V-12345678", textFieldFelipeLider);
-		
-		textFieldFelipedeGrupos = new JTextField();
-		textFieldFelipedeGrupos.setColumns(10);
-		textFieldFelipedeGrupos.setBounds(457, 308, 234, 36);
-		panelRegistro.add(textFieldFelipedeGrupos);
-		PromptSupport.setPrompt("Ej: V-12345678", textFieldFelipedeGrupos);
-		
-		JLabel lblNombresector = new JLabel("Nombre/Sector del Grupo:");
-		lblNombresector.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblNombresector.setBounds(238, 174, 200, 31);
-		panelRegistro.add(lblNombresector);
-		
-		JLabel lblCodigo = new JLabel("Codigo del Grupo:");
-		lblCodigo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblCodigo.setBounds(296, 221, 142, 31);
-		panelRegistro.add(lblCodigo);
-		
-		JLabel lblFelipeDeGrupos = new JLabel("Felipe de Grupos/Red a Cargo del Grupo:");
-		lblFelipeDeGrupos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblFelipeDeGrupos.setBounds(139, 308, 308, 27);
-		panelRegistro.add(lblFelipeDeGrupos);
-		
-		JLabel lblFelipeLider = new JLabel("Felipe Lider a Cargo del Grupo:");
-		lblFelipeLider.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblFelipeLider.setBounds(209, 264, 229, 31);
-		panelRegistro.add(lblFelipeLider);
-		
-		JLabel lblNota = new JLabel("New label");
-		lblNota.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/notificacion-registro_03.png")));
-		lblNota.setBounds(238, 623, 523, 45);
-		panelRegistro.add(lblNota);
-		
-		JButton btnRegistrar = new JButton("New button");
-		btnRegistrar.setToolTipText("Los miembros de este nuevo grupo deben ser agregados individualmente, buscando cada miembro individualmente y relacionandolo al grupo.");
-		
-		
-		btnRegistrar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegistrar.JPG")));
-		btnRegistrar.setBounds(570, 512, 324, 61);
-		panelRegistro.add(btnRegistrar);
-		
-		JButton btnRegresar = new JButton("New button");
-		btnRegresar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
-		btnRegresar.setBounds(114, 512, 324, 61);
-		panelRegistro.add(btnRegresar);
-		
-		JLabel lblWallpaperRegistro = new JLabel("");
-		lblWallpaperRegistro.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
-		lblWallpaperRegistro.setBounds(0, 66, 1008, 663);
-		panelRegistro.add(lblWallpaperRegistro);
-		
-		JLabel lblHeaderRegistro = new JLabel("");
-		lblHeaderRegistro.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Encabezado Registro Grupo.png")));
-		lblHeaderRegistro.setBounds(0, 0, 1008, 67);
-		panelRegistro.add(lblHeaderRegistro);
-		
-		JPanel panelModificacion = new JPanel();
 		panelModificacion.setBounds(0, 0, 1008, 729);
 		contentPane.add(panelModificacion);
 		panelModificacion.setLayout(null);
@@ -339,6 +547,7 @@ public class GestionGrupoBiblico extends JFrame {
 		PromptSupport.setPrompt("Ej: 12345", textFieldBusqueda);
 		
 		JButton btnRegresar2 = new JButton("New button");
+		btnRegresar2.addActionListener(new Control_GruposBiblico(this, "RegresarModif"));
 		btnRegresar2.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
 		btnRegresar2.setBounds(114, 512, 324, 61);
 		panelModificacion.add(btnRegresar2);
@@ -367,324 +576,135 @@ public class GestionGrupoBiblico extends JFrame {
 		lblHeaderModif.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Encabezadoodificargrupo.png")));
 		lblHeaderModif.setBounds(0, 0, 1008, 67);
 		panelModificacion.add(lblHeaderModif);
+		panelRegistro.setBounds(0, 0, 1008, 729);
+		contentPane.add(panelRegistro);
+		panelRegistro.setLayout(null);
 		
-		JPanel panelInformes_1 = new JPanel();
-		panelInformes_1.setBounds(0, 0, 1008, 729);
-		contentPane.add(panelInformes_1);
-		panelInformes_1.setLayout(null);
+		textFieldNombre = new JTextField();
+		textFieldNombre.setBounds(457, 174, 234, 36);
+		panelRegistro.add(textFieldNombre);
+		textFieldNombre.setColumns(10);
+		PromptSupport.setPrompt("Ej: Los Pitufos", textFieldNombre);
 		
-		JLabel lblHead4 = new JLabel("New label");
-		lblHead4.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/EncabezadoInformes.png")));
-		lblHead4.setBounds(0, 0, 1008, 67);
-		panelInformes_1.add(lblHead4);
+		textFieldCodigo = new JTextField();
+		textFieldCodigo.setBounds(457, 221, 234, 36);
+		panelRegistro.add(textFieldCodigo);
+		textFieldCodigo.setColumns(10);
+		PromptSupport.setPrompt("Ej: 12345", textFieldCodigo);
 		
-		JLabel lblCdigoDelGrupo = new JLabel("C\u00F3digo del grupo b\u00EDblico:");
-		lblCdigoDelGrupo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblCdigoDelGrupo.setBounds(188, 111, 174, 22);
-		panelInformes_1.add(lblCdigoDelGrupo);
+		textFieldFelipeLider = new JTextField();
+		textFieldFelipeLider.setBounds(457, 264, 234, 36);
+		panelRegistro.add(textFieldFelipeLider);
+		textFieldFelipeLider.setColumns(10);
+		PromptSupport.setPrompt("Ej: V-12345678", textFieldFelipeLider);
 		
-		textFieldCodigoGrupo = new JTextField();
-		textFieldCodigoGrupo.setBounds(385, 110, 234, 31);
-		panelInformes_1.add(textFieldCodigoGrupo);
-		textFieldCodigoGrupo.setColumns(10);
+		textFieldFelipedeGrupos = new JTextField();
+		textFieldFelipedeGrupos.setColumns(10);
+		textFieldFelipedeGrupos.setBounds(457, 308, 234, 36);
+		panelRegistro.add(textFieldFelipedeGrupos);
+		PromptSupport.setPrompt("Ej: V-12345678", textFieldFelipedeGrupos);
 		
-		JButton btnBuscar2 = new JButton("");
-		btnBuscar2.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonBuscar.JPG")));
-		btnBuscar2.setBounds(653, 106, 154, 41);
-		panelInformes_1.add(btnBuscar2);
+		JLabel lblNombresector = new JLabel("Nombre/Sector del Grupo:");
+		lblNombresector.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblNombresector.setBounds(238, 174, 200, 31);
+		panelRegistro.add(lblNombresector);
 		
-		JLabel lblFecha = new JLabel("Fecha:");
-		lblFecha.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblFecha.setBounds(64, 214, 48, 14);
-		panelInformes_1.add(lblFecha);
+		JLabel lblCodigo = new JLabel("Codigo del Grupo:");
+		lblCodigo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblCodigo.setBounds(296, 221, 142, 31);
+		panelRegistro.add(lblCodigo);
 		
-		textFieldFechaReporte = new JTextField();
-		textFieldFechaReporte.setEditable(false);
-		textFieldFechaReporte.setBounds(122, 206, 234, 36);
-		panelInformes_1.add(textFieldFechaReporte);
-		textFieldFechaReporte.setColumns(10);
+		JLabel lblFelipeDeGrupos = new JLabel("Felipe de Grupos/Red a Cargo del Grupo:");
+		lblFelipeDeGrupos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblFelipeDeGrupos.setBounds(139, 308, 308, 27);
+		panelRegistro.add(lblFelipeDeGrupos);
 		
-		JLabel lblFelipes = new JLabel("Felipes:");
-		lblFelipes.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblFelipes.setBounds(61, 272, 51, 22);
-		panelInformes_1.add(lblFelipes);
+		JLabel lblFelipeLider = new JLabel("Felipe Lider a Cargo del Grupo:");
+		lblFelipeLider.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+		lblFelipeLider.setBounds(209, 264, 229, 31);
+		panelRegistro.add(lblFelipeLider);
 		
-		JLabel lblEtopes = new JLabel("Et\u00EDopes:");
-		lblEtopes.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblEtopes.setBounds(59, 320, 53, 22);
-		panelInformes_1.add(lblEtopes);
+		JLabel lblNota = new JLabel("New label");
+		lblNota.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/notificacion-registro_03.png")));
+		lblNota.setBounds(238, 623, 523, 45);
+		panelRegistro.add(lblNota);
 		
-		JLabel lblAmigos = new JLabel("Amigos:");
-		lblAmigos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblAmigos.setBounds(56, 370, 56, 22);
-		panelInformes_1.add(lblAmigos);
+		JButton btnRegistrar = new JButton("New button");
+		btnRegistrar.setToolTipText("Los miembros de este nuevo grupo deben ser agregados individualmente, buscando cada miembro individualmente y relacionandolo al grupo.");
 		
-		JLabel lblNios = new JLabel("Ni\u00F1os:");
-		lblNios.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblNios.setBounds(66, 431, 46, 14);
-		panelInformes_1.add(lblNios);
 		
-		JLabel lblAusentes = new JLabel("Ausentes:");
-		lblAusentes.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblAusentes.setBounds(46, 478, 66, 22);
-		panelInformes_1.add(lblAusentes);
+		btnRegistrar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegistrar.JPG")));
+		btnRegistrar.setBounds(570, 512, 324, 61);
+		panelRegistro.add(btnRegistrar);
 		
-		JLabel lblDiezmos = new JLabel("Diezmos:");
-		lblDiezmos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblDiezmos.setBounds(638, 374, 66, 14);
-		panelInformes_1.add(lblDiezmos);
+		JButton btnRegresar = new JButton("New button");
+		btnRegresar.addActionListener(new Control_GruposBiblico(this, "btnRegresar"));
+		btnRegresar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
+		btnRegresar.setBounds(114, 512, 324, 61);
+		panelRegistro.add(btnRegresar);
 		
-		JLabel lblOfrenda = new JLabel("Ofrenda:");
-		lblOfrenda.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblOfrenda.setBounds(640, 431, 64, 14);
-		panelInformes_1.add(lblOfrenda);
+		JLabel lblWallpaperRegistro = new JLabel("");
+		lblWallpaperRegistro.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
+		lblWallpaperRegistro.setBounds(0, 66, 1008, 663);
+		panelRegistro.add(lblWallpaperRegistro);
 		
-		JLabel lblOfrendaBus = new JLabel("Ofrenda Bus:");
-		lblOfrendaBus.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblOfrendaBus.setBounds(610, 485, 89, 14);
-		panelInformes_1.add(lblOfrendaBus);
+		JLabel lblHeaderRegistro = new JLabel("");
+		lblHeaderRegistro.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Encabezado Registro Grupo.png")));
+		lblHeaderRegistro.setBounds(0, 0, 1008, 67);
+		panelRegistro.add(lblHeaderRegistro);
 		
-		JLabel lblConversionesDeAdultos = new JLabel("Conversiones de Adultos:");
-		lblConversionesDeAdultos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblConversionesDeAdultos.setBounds(522, 213, 189, 17);
-		panelInformes_1.add(lblConversionesDeAdultos);
+		panelPrincipal = new JPanel();
+		panelPrincipal.setBounds(0, 0, 1008, 729);
+		contentPane.add(panelPrincipal);
+		panelPrincipal.setLayout(null);
 		
-		JLabel lblConversionesDeNios = new JLabel("Conversiones de ni\u00F1os:");
-		lblConversionesDeNios.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblConversionesDeNios.setBounds(539, 276, 160, 14);
-		panelInformes_1.add(lblConversionesDeNios);
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 68, 1008, 66);
+		panelPrincipal.add(menuBar);
 		
-		JLabel lblReconciliaciones = new JLabel("Reconciliaciones:");
-		lblReconciliaciones.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblReconciliaciones.setBounds(582, 324, 117, 14);
-		panelInformes_1.add(lblReconciliaciones);
+		mnRegistrar = new JMenu("Registrar");
+		mnRegistrar.setForeground(Color.BLACK);
+		mnRegistrar.addMouseListener(new Control_GruposBiblico(this, "Registrar"));
+		mnRegistrar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/add-group-button.png")));
+		menuBar.add(mnRegistrar);
 		
-		textFieldFelipes = new JTextField();
-		textFieldFelipes.setEditable(false);
-		textFieldFelipes.setBounds(122, 268, 234, 36);
-		panelInformes_1.add(textFieldFelipes);
-		textFieldFelipes.setColumns(10);
+		mnModificar = new JMenu("Modificar");
+		mnModificar.setForeground(Color.BLACK);
+		mnModificar.addMouseListener(new Control_GruposBiblico(this, "Modificar"));
+		mnModificar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/group-editor.png")));
+		menuBar.add(mnModificar);
 		
-		textFieldEtiopes = new JTextField();
-		textFieldEtiopes.setEditable(false);
-		textFieldEtiopes.setBounds(122, 316, 234, 36);
-		panelInformes_1.add(textFieldEtiopes);
-		textFieldEtiopes.setColumns(10);
+		mnAgregarInfor = new JMenu("Agregar informes semanales");
+		mnAgregarInfor.setForeground(Color.BLACK);
+		mnAgregarInfor.addMouseListener(new Control_GruposBiblico(this, "AgregarInfo"));
+		mnAgregarInfor.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/business-report.png")));
+		menuBar.add(mnAgregarInfor);
 		
-		textFieldAmigos = new JTextField();
-		textFieldAmigos.setEditable(false);
-		textFieldAmigos.setBounds(122, 366, 234, 36);
-		panelInformes_1.add(textFieldAmigos);
-		textFieldAmigos.setColumns(10);
+		mnListar = new JMenu("Listar...");
+		mnListar.addMouseListener(new Control_GruposBiblico(this, "Listar"));
+		mnListar.setForeground(Color.BLACK);
+		mnListar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/numbered-list.png")));
+		menuBar.add(mnListar);
 		
-		textFieldNinos = new JTextField();
-		textFieldNinos.setEditable(false);
-		textFieldNinos.setText("");
-		textFieldNinos.setBounds(122, 423, 234, 36);
-		panelInformes_1.add(textFieldNinos);
-		textFieldNinos.setColumns(10);
+		mntmRegresar = new JMenuItem("Regresar");
+		mntmRegresar.addMouseListener(new Control_GruposBiblico(this, "Regresar"));
+		mntmRegresar.setForeground(Color.BLACK);
+		mntmRegresar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/return.png")));
+		menuBar.add(mntmRegresar);
 		
-		textFieldAusentes = new JTextField();
-		textFieldAusentes.setEditable(false);
-		textFieldAusentes.setText("");
-		textFieldAusentes.setBounds(122, 474, 234, 36);
-		panelInformes_1.add(textFieldAusentes);
-		textFieldAusentes.setColumns(10);
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setBounds(95, 159, 756, 533);
+		panelPrincipal.add(lblLogo);
+		lblLogo.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/slogan-transparente-2016.png")));
 		
-		textFieldConversionesAdultos = new JTextField();
-		textFieldConversionesAdultos.setEditable(false);
-		textFieldConversionesAdultos.setBounds(722, 206, 234, 36);
-		panelInformes_1.add(textFieldConversionesAdultos);
-		textFieldConversionesAdultos.setColumns(10);
+		JLabel lblHeader = new JLabel("header");
+		lblHeader.setBounds(0, 0, 1008, 67);
+		panelPrincipal.add(lblHeader);
+		lblHeader.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Encabezado gestion grupos.png")));
 		
-		textFieldConversionesNinos = new JTextField();
-		textFieldConversionesNinos.setEditable(false);
-		textFieldConversionesNinos.setBounds(722, 268, 234, 36);
-		panelInformes_1.add(textFieldConversionesNinos);
-		textFieldConversionesNinos.setColumns(10);
-		
-		textFieldReconciliaciones = new JTextField();
-		textFieldReconciliaciones.setEditable(false);
-		textFieldReconciliaciones.setBounds(722, 316, 234, 36);
-		panelInformes_1.add(textFieldReconciliaciones);
-		textFieldReconciliaciones.setColumns(10);
-		
-		textFieldDiezmos = new JTextField();
-		textFieldDiezmos.setEditable(false);
-		textFieldDiezmos.setBounds(722, 366, 234, 36);
-		panelInformes_1.add(textFieldDiezmos);
-		textFieldDiezmos.setColumns(10);
-		
-		textFieldOfrenda = new JTextField();
-		textFieldOfrenda.setEditable(false);
-		textFieldOfrenda.setBounds(722, 423, 234, 36);
-		panelInformes_1.add(textFieldOfrenda);
-		textFieldOfrenda.setColumns(10);
-		
-		textFieldOfrendaBus = new JTextField();
-		textFieldOfrendaBus.setEditable(false);
-		textFieldOfrendaBus.setBounds(722, 474, 234, 36);
-		panelInformes_1.add(textFieldOfrendaBus);
-		textFieldOfrendaBus.setColumns(10);
-		
-		JButton btnRegresar3 = new JButton("");
-		btnRegresar3.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
-		btnRegresar3.setBounds(116, 563, 324, 61);
-		panelInformes_1.add(btnRegresar3);
-		
-		JButton btnSiguiente = new JButton("New button");
-		btnSiguiente.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonSiguiente.jpg")));
-		btnSiguiente.setBounds(571, 563, 324, 61);
-		panelInformes_1.add(btnSiguiente);
-		
-		JLabel lblWallpaper2 = new JLabel("");
-		lblWallpaper2.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
-		lblWallpaper2.setBounds(0, 69, 1008, 660);
-		panelInformes_1.add(lblWallpaper2);
-		
-		JPanel panelInformes_2 = new JPanel();
-		panelInformes_2.setBounds(0, 0, 1008, 729);
-		contentPane.add(panelInformes_2);
-		panelInformes_2.setLayout(null);
-		
-		JLabel labelHead = new JLabel("");
-		labelHead.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/EncabezadoInformes.png")));
-		labelHead.setBounds(0, 0, 1008, 67);
-		panelInformes_2.add(labelHead);
-		
-		JLabel lblMisinAmigo = new JLabel("Misi\u00F3n Amigo:");
-		lblMisinAmigo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblMisinAmigo.setBounds(88, 141, 100, 22);
-		panelInformes_2.add(lblMisinAmigo);
-		
-		JLabel lblNewLabel = new JLabel("Consolidaci\u00F3n:");
-		lblNewLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblNewLabel.setBounds(88, 194, 101, 14);
-		panelInformes_2.add(lblNewLabel);
-		
-		JLabel lblDiscipulado = new JLabel("Discipulado 1:");
-		lblDiscipulado.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblDiscipulado.setBounds(88, 254, 100, 22);
-		panelInformes_2.add(lblDiscipulado);
-		
-		JLabel lblAsisDomHermanos = new JLabel("Asis. Dom. Hermanos:");
-		lblAsisDomHermanos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblAsisDomHermanos.setBounds(38, 315, 151, 14);
-		panelInformes_2.add(lblAsisDomHermanos);
-		
-		JLabel lblAsisDomAmigos = new JLabel("Asis. Dom. Amigos:");
-		lblAsisDomAmigos.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblAsisDomAmigos.setBounds(56, 372, 132, 22);
-		panelInformes_2.add(lblAsisDomAmigos);
-		
-		JLabel lblAsisDomNios = new JLabel("Asis. Dom. Ni\u00F1os:");
-		lblAsisDomNios.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblAsisDomNios.setBounds(70, 437, 132, 14);
-		panelInformes_2.add(lblAsisDomNios);
-		
-		JLabel lblAsisDomVea = new JLabel("Asis. V.E.A:");
-		lblAsisDomVea.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblAsisDomVea.setBounds(650, 149, 72, 14);
-		panelInformes_2.add(lblAsisDomVea);
-		
-		JLabel lblAsisEscuelaDe = new JLabel("Asis. Escuela de Liderazgo:");
-		lblAsisEscuelaDe.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblAsisEscuelaDe.setBounds(540, 190, 182, 22);
-		panelInformes_2.add(lblAsisEscuelaDe);
-		
-		JLabel lblNewLabel_1 = new JLabel("Visitas realizadas:");
-		lblNewLabel_1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(596, 258, 126, 14);
-		panelInformes_2.add(lblNewLabel_1);
-		
-		JLabel lblOfrendaMisionera = new JLabel("Ofrenda misionera:");
-		lblOfrendaMisionera.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblOfrendaMisionera.setBounds(589, 315, 133, 14);
-		panelInformes_2.add(lblOfrendaMisionera);
-		
-		JLabel lblOfrendaNios = new JLabel("Ofrenda Ni\u00F1os:");
-		lblOfrendaNios.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblOfrendaNios.setBounds(617, 376, 105, 14);
-		panelInformes_2.add(lblOfrendaNios);
-		
-		textFieldMisionamigo = new JTextField();
-		textFieldMisionamigo.setBounds(212, 137, 234, 36);
-		panelInformes_2.add(textFieldMisionamigo);
-		textFieldMisionamigo.setColumns(10);
-		
-		textFieldConsolidacion = new JTextField();
-		textFieldConsolidacion.setBounds(212, 186, 234, 36);
-		panelInformes_2.add(textFieldConsolidacion);
-		textFieldConsolidacion.setColumns(10);
-		
-		textFieldDiscipulado1 = new JTextField();
-		textFieldDiscipulado1.setText("");
-		textFieldDiscipulado1.setBounds(212, 246, 234, 36);
-		panelInformes_2.add(textFieldDiscipulado1);
-		textFieldDiscipulado1.setColumns(10);
-		
-		textFieldHermanosDom = new JTextField();
-		textFieldHermanosDom.setBounds(212, 307, 234, 36);
-		panelInformes_2.add(textFieldHermanosDom);
-		textFieldHermanosDom.setColumns(10);
-		
-		textFieldAmigosDom = new JTextField();
-		textFieldAmigosDom.setText("");
-		textFieldAmigosDom.setBounds(212, 368, 234, 36);
-		panelInformes_2.add(textFieldAmigosDom);
-		textFieldAmigosDom.setColumns(10);
-		
-		textFieldNinosDom = new JTextField();
-		textFieldNinosDom.setText("");
-		textFieldNinosDom.setBounds(212, 429, 234, 36);
-		panelInformes_2.add(textFieldNinosDom);
-		textFieldNinosDom.setColumns(10);
-		
-		textFieldVEA = new JTextField();
-		textFieldVEA.setBounds(740, 137, 234, 36);
-		panelInformes_2.add(textFieldVEA);
-		textFieldVEA.setColumns(10);
-		
-		textFieldEscuela = new JTextField();
-		textFieldEscuela.setText("");
-		textFieldEscuela.setBounds(740, 186, 234, 36);
-		panelInformes_2.add(textFieldEscuela);
-		textFieldEscuela.setColumns(10);
-		
-		textFieldVisitas = new JTextField();
-		textFieldVisitas.setBounds(740, 250, 234, 36);
-		panelInformes_2.add(textFieldVisitas);
-		textFieldVisitas.setColumns(10);
-		
-		textFieldOfrendaMisionera = new JTextField();
-		textFieldOfrendaMisionera.setBounds(740, 307, 234, 36);
-		panelInformes_2.add(textFieldOfrendaMisionera);
-		textFieldOfrendaMisionera.setColumns(10);
-		
-		textFieldOfrendaNinos = new JTextField();
-		textFieldOfrendaNinos.setText("");
-		textFieldOfrendaNinos.setBounds(740, 368, 234, 36);
-		panelInformes_2.add(textFieldOfrendaNinos);
-		textFieldOfrendaNinos.setColumns(10);
-		
-		JButton buttonGuardar = new JButton("");
-		buttonGuardar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonGuardarInforme.JPG")));
-		buttonGuardar.setBounds(571, 563, 324, 61);
-		panelInformes_2.add(buttonGuardar);
-		
-		JButton buttonRegresar = new JButton("");
-		buttonRegresar.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
-		buttonRegresar.setBounds(116, 563, 324, 61);
-		panelInformes_2.add(buttonRegresar);
-		
-		JLabel labelAdvise = new JLabel("");
-		labelAdvise.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/notification_u4i_03.png")));
-		labelAdvise.setBounds(240, 664, 519, 41);
-		panelInformes_2.add(labelAdvise);
-		
-		JLabel lblWallpaper3 = new JLabel("");
-		lblWallpaper3.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
-		lblWallpaper3.setBounds(0, 67, 1008, 662);
-		panelInformes_2.add(lblWallpaper3);
+		JLabel lblWallpaper = new JLabel("wallpaper");
+		lblWallpaper.setBounds(0, 129, 1018, 600);
+		panelPrincipal.add(lblWallpaper);
+		lblWallpaper.setIcon(new ImageIcon(GestionGrupoBiblico.class.getResource("/com/planfelipe/imagenes/Background.png")));
 	}
 }
