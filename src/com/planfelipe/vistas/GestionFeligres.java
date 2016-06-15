@@ -11,35 +11,39 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import org.jdatepicker.impl.JDatePickerImpl;
+//import org.jdatepicker.impl.JDatePickerImpl;
 import com.planfelipe.Class.Calendario;
 import com.planfelipe.Class.DateLabelFormatter;
+import com.planfelipe.Class.JDatePickerImpl;
 import com.planfelipe.Controlador.Control_GestionFeligreses;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import javax.swing.SpringLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GestionFeligres extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldCed;
 	public JDatePickerImpl textFieldFechaEntrega;
-	private JDatePickerImpl textFieldFechaBautismo;
+	public JDatePickerImpl textFieldFechaBautismo;
 	private JTextField textFieldnombre;
 	private JTextField textFieldApellido;
 	private JTextField textFieldGrupoB;
-	private JDatePickerImpl textFieldFechaNac;
+	public JDatePickerImpl textFieldFechaNac;
 	private JTextField textFieldLugarNac;
 	private JTextField textFieldDir;
 	private JTextField textFieldBarrio;
 	private JTextField textFieldExp;
 	private JTextField textFieldTel;
-	private JDatePickerImpl textFieldFechaConver;
+	public JDatePickerImpl textFieldFechaConver;
 	private JTextField textFieldCreenciaAnt;
 	private JTextField textFieldCodFelipe;
-	private JDatePickerImpl textFieldFechaContacto;
+	public JDatePickerImpl textFieldFechaContacto;
 	private JTextField textFieldProfesion;
 	private JTextField textFieldOficio;
 	private JTextField textFieldEmpresa;
@@ -94,151 +98,155 @@ public class GestionFeligres extends JFrame {
 		contentPane.add(panelRegistro2);
 		panelRegistro2.setLayout(null);
 		
+		
 		textFieldTel = new JTextField();
 		textFieldTel.setBounds(275, 168, 201, 36);
 		panelRegistro2.add(textFieldTel);
 		textFieldTel.setColumns(10);
 		textFieldFechaConver = new JDatePickerImpl(ca.GetCalendario(), new DateLabelFormatter());
-		textFieldFechaConver.setBounds(275, 355, 201, 25);
+		SpringLayout springLayout = (SpringLayout) textFieldFechaConver.getLayout();
+		springLayout.putConstraint(SpringLayout.SOUTH, textFieldFechaConver.getJFormattedTextField(), 0, SpringLayout.SOUTH, textFieldFechaConver);
+		
+		textFieldFechaConver.setBounds(275, 355, 201, 36);
 		panelRegistro2.add(textFieldFechaConver);
-	
 		
-		textFieldCreenciaAnt = new JTextField();
-		textFieldCreenciaAnt.setBounds(275, 408, 201, 36);
-		panelRegistro2.add(textFieldCreenciaAnt);
-		textFieldCreenciaAnt.setColumns(10);
-		
-		textFieldFechaContacto = new JDatePickerImpl(ca.GetCalendario(),new DateLabelFormatter());
-		textFieldFechaContacto.setBounds(684, 233, 201, 25);
-		panelRegistro2.add(textFieldFechaContacto);
-		
-		
-		textFieldCodFelipe = new JTextField();
-		textFieldCodFelipe.setBounds(684, 168, 201, 36);
-		panelRegistro2.add(textFieldCodFelipe);
-		textFieldCodFelipe.setColumns(10);
-		
-		textFieldProfesion = new JTextField();
-		textFieldProfesion.setBounds(684, 349, 201, 36);
-		panelRegistro2.add(textFieldProfesion);
-		textFieldProfesion.setColumns(10);
-		
-		textFieldOficio = new JTextField();
-		textFieldOficio.setBounds(684, 408, 201, 36);
-		panelRegistro2.add(textFieldOficio);
-		textFieldOficio.setColumns(10);
-		
-		JComboBox comboBoxEstCivil = new JComboBox();
-		comboBoxEstCivil.setBounds(275, 233, 201, 36);
-		panelRegistro2.add(comboBoxEstCivil);
-		
-		JComboBox comboBoxOcup = new JComboBox();
-		comboBoxOcup.setBounds(275, 291, 201, 36);
-		panelRegistro2.add(comboBoxOcup);
-		
-		JComboBox comboBoxBautAntes = new JComboBox();
-		comboBoxBautAntes.setBounds(275, 467, 201, 36);
-		panelRegistro2.add(comboBoxBautAntes);
-		
-		JComboBox comboBoxCarta = new JComboBox();
-		comboBoxCarta.setBounds(684, 467, 201, 36);
-		panelRegistro2.add(comboBoxCarta);
-		
-		JComboBox comboBoxEdGeneral = new JComboBox();
-		comboBoxEdGeneral.setBounds(684, 291, 201, 36);
-		panelRegistro2.add(comboBoxEdGeneral);
-		
-		JLabel lblhead2 = new JLabel("New label");
-		lblhead2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/EncabezadoRegistroFeligreses.png")));
-		lblhead2.setBounds(0, 0, 1008, 67);
-		panelRegistro2.add(lblhead2);
-		
-		JLabel lblDatos = new JLabel("Datos personales, historia de f\u00E9, capacitaci\u00F3n cristiana y educaci\u00F3n general");
-		lblDatos.setFont(new Font("Segoe UI", Font.PLAIN, 24));
-		lblDatos.setBounds(99, 79, 801, 32);
-		panelRegistro2.add(lblDatos);
-		
-		JLabel lblTelfono_1 = new JLabel("Tel\u00E9fono:");
-		lblTelfono_1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblTelfono_1.setBounds(192, 174, 63, 19);
-		panelRegistro2.add(lblTelfono_1);
-		
-		JLabel lblEstadoCivil = new JLabel("Estado Civil:");
-		lblEstadoCivil.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblEstadoCivil.setBounds(172, 239, 83, 14);
-		panelRegistro2.add(lblEstadoCivil);
-		
-		JLabel lblOcupacin = new JLabel("Ocupaci\u00F3n:");
-		lblOcupacin.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblOcupacin.setBounds(178, 295, 77, 19);
-		panelRegistro2.add(lblOcupacin);
-		
-		JLabel lblFechaDeConversin = new JLabel("Fecha de conversi\u00F3n:");
-		lblFechaDeConversin.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblFechaDeConversin.setBounds(112, 355, 144, 19);
-		panelRegistro2.add(lblFechaDeConversin);
-		
-		JLabel lblCreenciaAnterior = new JLabel("Creencia anterior:");
-		lblCreenciaAnterior.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblCreenciaAnterior.setBounds(134, 416, 122, 14);
-		panelRegistro2.add(lblCreenciaAnterior);
-		
-		JLabel lblfueBautizadoEn = new JLabel("\u00BFFue bautizado en otra iglesia?:");
-		lblfueBautizadoEn.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblfueBautizadoEn.setBounds(42, 471, 215, 22);
-		panelRegistro2.add(lblfueBautizadoEn);
-		
-		JLabel lblcartaDeRecomendacin = new JLabel("\u00BFCarta de recomendaci\u00F3n?:");
-		lblcartaDeRecomendacin.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblcartaDeRecomendacin.setBounds(486, 471, 188, 25);
-		panelRegistro2.add(lblcartaDeRecomendacin);
-		
-		JLabel lblCdigoFelipe = new JLabel("C\u00F3digo Felipe:");
-		lblCdigoFelipe.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblCdigoFelipe.setBounds(576, 171, 98, 25);
-		panelRegistro2.add(lblCdigoFelipe);
-		
-		JLabel lblFechaDeContacto = new JLabel("Fecha de contacto:");
-		lblFechaDeContacto.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblFechaDeContacto.setBounds(547, 239, 127, 14);
-		panelRegistro2.add(lblFechaDeContacto);
-		
-		JLabel lblEducacinGeneral = new JLabel("Educaci\u00F3n general:");
-		lblEducacinGeneral.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblEducacinGeneral.setBounds(545, 295, 129, 27);
-		panelRegistro2.add(lblEducacinGeneral);
-		
-		JLabel lblProfesin = new JLabel("Profesi\u00F3n:");
-		lblProfesin.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblProfesin.setBounds(605, 355, 69, 14);
-		panelRegistro2.add(lblProfesin);
-		
-		JLabel lblOficioOCargo = new JLabel("Oficio o cargo:");
-		lblOficioOCargo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblOficioOCargo.setBounds(576, 411, 100, 25);
-		panelRegistro2.add(lblOficioOCargo);
-		
-		JButton btnRegresar2 = new JButton("New button");
-		btnRegresar2.addActionListener(new Control_GestionFeligreses(this, "Regresar_2"));
-		btnRegresar2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
-		btnRegresar2.setBounds(116, 563, 324, 61);
-		panelRegistro2.add(btnRegresar2);
-		
-		JButton btnSiguiente2 = new JButton("New button");
-		btnSiguiente2.addActionListener(new Control_GestionFeligreses(this, "Siguiente_2"));
-		btnSiguiente2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonSiguiente.jpg")));
-		btnSiguiente2.setBounds(571, 563, 324, 61);
-		panelRegistro2.add(btnSiguiente2);
-		
-		JLabel lblAdvise = new JLabel("New label");
-		lblAdvise.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/notification_ui_03.png")));
-		lblAdvise.setBounds(255, 653, 523, 65);
-		panelRegistro2.add(lblAdvise);
-		
-		JLabel lblWall2 = new JLabel("New label");
-		lblWall2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
-		lblWall2.setBounds(0, 66, 1008, 663);
-		panelRegistro2.add(lblWall2);
+			
+			textFieldCreenciaAnt = new JTextField();
+			textFieldCreenciaAnt.setBounds(275, 408, 201, 36);
+			panelRegistro2.add(textFieldCreenciaAnt);
+			textFieldCreenciaAnt.setColumns(10);
+			
+			textFieldFechaContacto = new JDatePickerImpl(ca.GetCalendario(),new DateLabelFormatter());
+			textFieldFechaContacto.setBounds(684, 233, 201, 36);
+			panelRegistro2.add(textFieldFechaContacto);
+			
+			
+			textFieldCodFelipe = new JTextField();
+			textFieldCodFelipe.setBounds(684, 168, 201, 36);
+			panelRegistro2.add(textFieldCodFelipe);
+			textFieldCodFelipe.setColumns(10);
+			
+			textFieldProfesion = new JTextField();
+			textFieldProfesion.setBounds(684, 349, 201, 36);
+			panelRegistro2.add(textFieldProfesion);
+			textFieldProfesion.setColumns(10);
+			
+			textFieldOficio = new JTextField();
+			textFieldOficio.setBounds(684, 408, 201, 36);
+			panelRegistro2.add(textFieldOficio);
+			textFieldOficio.setColumns(10);
+			
+			JComboBox comboBoxEstCivil = new JComboBox();
+			comboBoxEstCivil.setBounds(275, 233, 201, 36);
+			panelRegistro2.add(comboBoxEstCivil);
+			
+			JComboBox comboBoxOcup = new JComboBox();
+			comboBoxOcup.setBounds(275, 291, 201, 36);
+			panelRegistro2.add(comboBoxOcup);
+			
+			JComboBox comboBoxBautAntes = new JComboBox();
+			comboBoxBautAntes.setBounds(275, 467, 201, 36);
+			panelRegistro2.add(comboBoxBautAntes);
+			
+			JComboBox comboBoxCarta = new JComboBox();
+			comboBoxCarta.setBounds(684, 467, 201, 36);
+			panelRegistro2.add(comboBoxCarta);
+			
+			JComboBox comboBoxEdGeneral = new JComboBox();
+			comboBoxEdGeneral.setBounds(684, 291, 201, 36);
+			panelRegistro2.add(comboBoxEdGeneral);
+			
+			JLabel lblhead2 = new JLabel("New label");
+			lblhead2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/EncabezadoRegistroFeligreses.png")));
+			lblhead2.setBounds(0, 0, 1008, 67);
+			panelRegistro2.add(lblhead2);
+			
+			JLabel lblDatos = new JLabel("Datos personales, historia de f\u00E9, capacitaci\u00F3n cristiana y educaci\u00F3n general");
+			lblDatos.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+			lblDatos.setBounds(99, 79, 801, 32);
+			panelRegistro2.add(lblDatos);
+			
+			JLabel lblTelfono_1 = new JLabel("Tel\u00E9fono:");
+			lblTelfono_1.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblTelfono_1.setBounds(192, 174, 63, 19);
+			panelRegistro2.add(lblTelfono_1);
+			
+			JLabel lblEstadoCivil = new JLabel("Estado Civil:");
+			lblEstadoCivil.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblEstadoCivil.setBounds(172, 239, 83, 14);
+			panelRegistro2.add(lblEstadoCivil);
+			
+			JLabel lblOcupacin = new JLabel("Ocupaci\u00F3n:");
+			lblOcupacin.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblOcupacin.setBounds(178, 295, 77, 19);
+			panelRegistro2.add(lblOcupacin);
+			
+			JLabel lblFechaDeConversin = new JLabel("Fecha de conversi\u00F3n:");
+			lblFechaDeConversin.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblFechaDeConversin.setBounds(112, 355, 144, 19);
+			panelRegistro2.add(lblFechaDeConversin);
+			
+			JLabel lblCreenciaAnterior = new JLabel("Creencia anterior:");
+			lblCreenciaAnterior.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblCreenciaAnterior.setBounds(134, 416, 122, 14);
+			panelRegistro2.add(lblCreenciaAnterior);
+			
+			JLabel lblfueBautizadoEn = new JLabel("\u00BFFue bautizado en otra iglesia?:");
+			lblfueBautizadoEn.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblfueBautizadoEn.setBounds(42, 471, 215, 22);
+			panelRegistro2.add(lblfueBautizadoEn);
+			
+			JLabel lblcartaDeRecomendacin = new JLabel("\u00BFCarta de recomendaci\u00F3n?:");
+			lblcartaDeRecomendacin.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblcartaDeRecomendacin.setBounds(486, 471, 188, 25);
+			panelRegistro2.add(lblcartaDeRecomendacin);
+			
+			JLabel lblCdigoFelipe = new JLabel("C\u00F3digo Felipe:");
+			lblCdigoFelipe.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblCdigoFelipe.setBounds(576, 171, 98, 25);
+			panelRegistro2.add(lblCdigoFelipe);
+			
+			JLabel lblFechaDeContacto = new JLabel("Fecha de contacto:");
+			lblFechaDeContacto.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblFechaDeContacto.setBounds(547, 239, 127, 14);
+			panelRegistro2.add(lblFechaDeContacto);
+			
+			JLabel lblEducacinGeneral = new JLabel("Educaci\u00F3n general:");
+			lblEducacinGeneral.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblEducacinGeneral.setBounds(545, 295, 129, 27);
+			panelRegistro2.add(lblEducacinGeneral);
+			
+			JLabel lblProfesin = new JLabel("Profesi\u00F3n:");
+			lblProfesin.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblProfesin.setBounds(605, 355, 69, 14);
+			panelRegistro2.add(lblProfesin);
+			
+			JLabel lblOficioOCargo = new JLabel("Oficio o cargo:");
+			lblOficioOCargo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblOficioOCargo.setBounds(576, 411, 100, 25);
+			panelRegistro2.add(lblOficioOCargo);
+			
+			JButton btnRegresar2 = new JButton("New button");
+			btnRegresar2.addActionListener(new Control_GestionFeligreses(this, "Regresar_2"));
+			btnRegresar2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
+			btnRegresar2.setBounds(116, 563, 324, 61);
+			panelRegistro2.add(btnRegresar2);
+			
+			JButton btnSiguiente2 = new JButton("New button");
+			btnSiguiente2.addActionListener(new Control_GestionFeligreses(this, "Siguiente_2"));
+			btnSiguiente2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonSiguiente.jpg")));
+			btnSiguiente2.setBounds(571, 563, 324, 61);
+			panelRegistro2.add(btnSiguiente2);
+			
+			JLabel lblAdvise = new JLabel("New label");
+			lblAdvise.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/notification_ui_03.png")));
+			lblAdvise.setBounds(255, 653, 523, 65);
+			panelRegistro2.add(lblAdvise);
+			
+			JLabel lblWall2 = new JLabel("New label");
+			lblWall2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
+			lblWall2.setBounds(0, 66, 1008, 663);
+			panelRegistro2.add(lblWall2);
 		panelRegistro1.setBounds(0, 0, 1008, 729);
 		contentPane.add(panelRegistro1);
 		panelRegistro1.setLayout(null);
@@ -251,11 +259,11 @@ public class GestionFeligres extends JFrame {
 	
 		
 		textFieldFechaEntrega = new JDatePickerImpl(ca.GetCalendario(),new DateLabelFormatter());
-		textFieldFechaEntrega.setBounds(275, 231, 201, 26);
+		textFieldFechaEntrega.setBounds(275, 231, 201, 36);
 		panelRegistro1.add(textFieldFechaEntrega);
-				
+		
 		textFieldFechaBautismo = new JDatePickerImpl(ca.GetCalendario(),new DateLabelFormatter());
-		textFieldFechaBautismo.setBounds(275, 289, 201, 26);
+		textFieldFechaBautismo.setBounds(275, 289, 201, 36);
 		panelRegistro1.add(textFieldFechaBautismo);
 		
 		
@@ -275,125 +283,125 @@ public class GestionFeligres extends JFrame {
 		textFieldGrupoB.setColumns(10);
 		
 		textFieldFechaNac = new JDatePickerImpl(ca.GetCalendario(),new DateLabelFormatter());
-		textFieldFechaNac.setBounds(684, 168, 201, 26);
+		textFieldFechaNac.setBounds(684, 168, 201, 36);
 		panelRegistro1.add(textFieldFechaNac);
-	
 		
-		textFieldLugarNac = new JTextField();
-		textFieldLugarNac.setBounds(684, 231, 201, 36);
-		panelRegistro1.add(textFieldLugarNac);
-		textFieldLugarNac.setColumns(10);
-		
-		textFieldDir = new JTextField();
-		textFieldDir.setBounds(684, 349, 201, 36);
-		panelRegistro1.add(textFieldDir);
-		textFieldDir.setColumns(10);
-		
-		textFieldBarrio = new JTextField();
-		textFieldBarrio.setBounds(684, 408, 201, 36);
-		panelRegistro1.add(textFieldBarrio);
-		textFieldBarrio.setColumns(10);
-		
-		textFieldExp = new JTextField();
-		textFieldExp.setBounds(684, 467, 201, 36);
-		panelRegistro1.add(textFieldExp);
-		textFieldExp.setColumns(10);
-		
-		JComboBox comboBoxSexo = new JComboBox();
-		comboBoxSexo.setBounds(684, 289, 201, 36);
-		panelRegistro1.add(comboBoxSexo);
-		
-		JLabel lblGrupoBiblico = new JLabel("Grupo B\u00EDblico:");
-		lblGrupoBiblico.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblGrupoBiblico.setBounds(159, 473, 97, 19);
-		panelRegistro1.add(lblGrupoBiblico);
-		
-		JLabel lblHeader2 = new JLabel("");
-		lblHeader2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/EncabezadoRegistroFeligreses.png")));
-		lblHeader2.setBounds(0, 0, 1008, 67);
-		panelRegistro1.add(lblHeader2);
-		
-		JLabel lblentrega = new JLabel("Fecha de entrega de la hoja de vida:");
-		lblentrega.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblentrega.setBounds(10, 235, 253, 22);
-		panelRegistro1.add(lblentrega);
-		
-		JLabel lblDatosIniciales = new JLabel("Datos personales");
-		lblDatosIniciales.setFont(new Font("Segoe UI", Font.PLAIN, 24));
-		lblDatosIniciales.setBounds(400, 78, 201, 31);
-		panelRegistro1.add(lblDatosIniciales);
-		
-		JLabel lblBautismo = new JLabel("Fecha de bautismo:");
-		lblBautismo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblBautismo.setBounds(126, 295, 139, 22);
-		panelRegistro1.add(lblBautismo);
-		
-		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblNombre.setBounds(196, 353, 67, 22);
-		panelRegistro1.add(lblNombre);
-		
-		JLabel lblApellido = new JLabel("Apellido:");
-		lblApellido.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblApellido.setBounds(196, 414, 67, 19);
-		panelRegistro1.add(lblApellido);
-		
-		JLabel lblCedula = new JLabel("Cedula de identidad:");
-		lblCedula.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblCedula.setBounds(116, 176, 146, 14);
-		panelRegistro1.add(lblCedula);
-		
-		JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento:");
-		lblFechaDeNacimiento.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblFechaDeNacimiento.setBounds(520, 171, 154, 25);
-		panelRegistro1.add(lblFechaDeNacimiento);
-		
-		JLabel lblSexo = new JLabel("Sexo:");
-		lblSexo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblSexo.setBounds(628, 298, 46, 14);
-		panelRegistro1.add(lblSexo);
-		
-		JLabel lblDireccin = new JLabel("Direcci\u00F3n:");
-		lblDireccin.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblDireccin.setBounds(597, 353, 77, 21);
-		panelRegistro1.add(lblDireccin);
-		
-		JLabel lblBarrio = new JLabel("Barrio:");
-		lblBarrio.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblBarrio.setBounds(621, 416, 53, 14);
-		panelRegistro1.add(lblBarrio);
-		
-		JLabel lblExpedicion = new JLabel("Lugar de expedici\u00F3n:");
-		lblExpedicion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblExpedicion.setBounds(528, 468, 146, 28);
-		panelRegistro1.add(lblExpedicion);
-		
-		JLabel lblLugarDeNacimiento = new JLabel("Lugar de nacimiento:");
-		lblLugarDeNacimiento.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-		lblLugarDeNacimiento.setBounds(520, 234, 147, 25);
-		panelRegistro1.add(lblLugarDeNacimiento);
-		
-		JButton btnSiguiente_1 = new JButton("New button");
-		btnSiguiente_1.addActionListener(new Control_GestionFeligreses(this, "Siguiente_1"));
-		btnSiguiente_1.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonSiguiente.jpg")));
-		btnSiguiente_1.setBounds(571, 563, 324, 61);
-		panelRegistro1.add(btnSiguiente_1);
-		
-		JButton btnRegresar_1 = new JButton("New button");
-		btnRegresar_1.addActionListener(new Control_GestionFeligreses(this, "Regresar_1"));
-		btnRegresar_1.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
-		btnRegresar_1.setBounds(116, 563, 324, 61);
-		panelRegistro1.add(btnRegresar_1);
-		
-		JLabel lblBeware = new JLabel("New label");
-		lblBeware.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/notification_ui_03.png")));
-		lblBeware.setBounds(255, 653, 523, 65);
-		panelRegistro1.add(lblBeware);
-		
-		JLabel lblWall = new JLabel("");
-		lblWall.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
-		lblWall.setBounds(0, 56, 1018, 662);
-		panelRegistro1.add(lblWall);
+			
+			textFieldLugarNac = new JTextField();
+			textFieldLugarNac.setBounds(684, 231, 201, 36);
+			panelRegistro1.add(textFieldLugarNac);
+			textFieldLugarNac.setColumns(10);
+			
+			textFieldDir = new JTextField();
+			textFieldDir.setBounds(684, 349, 201, 36);
+			panelRegistro1.add(textFieldDir);
+			textFieldDir.setColumns(10);
+			
+			textFieldBarrio = new JTextField();
+			textFieldBarrio.setBounds(684, 408, 201, 36);
+			panelRegistro1.add(textFieldBarrio);
+			textFieldBarrio.setColumns(10);
+			
+			textFieldExp = new JTextField();
+			textFieldExp.setBounds(684, 467, 201, 36);
+			panelRegistro1.add(textFieldExp);
+			textFieldExp.setColumns(10);
+			
+			JComboBox comboBoxSexo = new JComboBox();
+			comboBoxSexo.setBounds(684, 289, 201, 36);
+			panelRegistro1.add(comboBoxSexo);
+			
+			JLabel lblGrupoBiblico = new JLabel("Grupo B\u00EDblico:");
+			lblGrupoBiblico.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblGrupoBiblico.setBounds(159, 473, 97, 19);
+			panelRegistro1.add(lblGrupoBiblico);
+			
+			JLabel lblHeader2 = new JLabel("");
+			lblHeader2.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/EncabezadoRegistroFeligreses.png")));
+			lblHeader2.setBounds(0, 0, 1008, 67);
+			panelRegistro1.add(lblHeader2);
+			
+			JLabel lblentrega = new JLabel("Fecha de entrega de la hoja de vida:");
+			lblentrega.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblentrega.setBounds(10, 235, 253, 22);
+			panelRegistro1.add(lblentrega);
+			
+			JLabel lblDatosIniciales = new JLabel("Datos personales");
+			lblDatosIniciales.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+			lblDatosIniciales.setBounds(400, 78, 201, 31);
+			panelRegistro1.add(lblDatosIniciales);
+			
+			JLabel lblBautismo = new JLabel("Fecha de bautismo:");
+			lblBautismo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblBautismo.setBounds(126, 295, 139, 22);
+			panelRegistro1.add(lblBautismo);
+			
+			JLabel lblNombre = new JLabel("Nombre:");
+			lblNombre.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblNombre.setBounds(196, 353, 67, 22);
+			panelRegistro1.add(lblNombre);
+			
+			JLabel lblApellido = new JLabel("Apellido:");
+			lblApellido.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblApellido.setBounds(196, 414, 67, 19);
+			panelRegistro1.add(lblApellido);
+			
+			JLabel lblCedula = new JLabel("Cedula de identidad:");
+			lblCedula.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblCedula.setBounds(116, 176, 146, 14);
+			panelRegistro1.add(lblCedula);
+			
+			JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento:");
+			lblFechaDeNacimiento.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblFechaDeNacimiento.setBounds(520, 171, 154, 25);
+			panelRegistro1.add(lblFechaDeNacimiento);
+			
+			JLabel lblSexo = new JLabel("Sexo:");
+			lblSexo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblSexo.setBounds(628, 298, 46, 14);
+			panelRegistro1.add(lblSexo);
+			
+			JLabel lblDireccin = new JLabel("Direcci\u00F3n:");
+			lblDireccin.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblDireccin.setBounds(597, 353, 77, 21);
+			panelRegistro1.add(lblDireccin);
+			
+			JLabel lblBarrio = new JLabel("Barrio:");
+			lblBarrio.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblBarrio.setBounds(621, 416, 53, 14);
+			panelRegistro1.add(lblBarrio);
+			
+			JLabel lblExpedicion = new JLabel("Lugar de expedici\u00F3n:");
+			lblExpedicion.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblExpedicion.setBounds(528, 468, 146, 28);
+			panelRegistro1.add(lblExpedicion);
+			
+			JLabel lblLugarDeNacimiento = new JLabel("Lugar de nacimiento:");
+			lblLugarDeNacimiento.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+			lblLugarDeNacimiento.setBounds(520, 234, 147, 25);
+			panelRegistro1.add(lblLugarDeNacimiento);
+			
+			JButton btnSiguiente_1 = new JButton("New button");
+			btnSiguiente_1.addActionListener(new Control_GestionFeligreses(this, "Siguiente_1"));
+			btnSiguiente_1.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonSiguiente.jpg")));
+			btnSiguiente_1.setBounds(571, 563, 324, 61);
+			panelRegistro1.add(btnSiguiente_1);
+			
+			JButton btnRegresar_1 = new JButton("New button");
+			btnRegresar_1.addActionListener(new Control_GestionFeligreses(this, "Regresar_1"));
+			btnRegresar_1.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/BotonRegresar.JPG")));
+			btnRegresar_1.setBounds(116, 563, 324, 61);
+			panelRegistro1.add(btnRegresar_1);
+			
+			JLabel lblBeware = new JLabel("New label");
+			lblBeware.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/notification_ui_03.png")));
+			lblBeware.setBounds(255, 653, 523, 65);
+			panelRegistro1.add(lblBeware);
+			
+			JLabel lblWall = new JLabel("");
+			lblWall.setIcon(new ImageIcon(GestionFeligres.class.getResource("/com/planfelipe/imagenes/Background.png")));
+			lblWall.setBounds(0, 56, 1018, 662);
+			panelRegistro1.add(lblWall);
 		panelRegistro3.setBounds(0, 0, 1008, 729);
 		contentPane.add(panelRegistro3);
 		panelRegistro3.setLayout(null);

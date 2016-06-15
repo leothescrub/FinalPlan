@@ -114,7 +114,10 @@ public class Control_GestionFeligreses implements MouseListener, ActionListener{
 		
 			es.panelPrincipal.setVisible(true);
 		
-			//es.textFieldFechaEntrega = new JDatePickerImpl(q.GetCalendario(), new DateLabelFormatter());
+			es.textFieldFechaNac.hidePopup();
+			es.textFieldFechaEntrega.hidePopup();
+			es.textFieldFechaBautismo.hidePopup();
+			
 			es.panelRegistro1.setVisible(false);
 		
 		}
